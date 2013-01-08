@@ -1,12 +1,16 @@
 #ifndef BASEFENETRE_H
 #define BASEFENETRE_H
 
-#include <QWidget>
+#include <QtGui>
+#include <QMainWindow>
+#include <QMdiArea>
 
-class BaseFenetre : public QWidget
+
+class BaseFenetre : public QMainWindow
 {
-public:
-    BaseFenetre();
+        public:
+            BaseFenetre();
+        private:
 };
 
 #endif // BASEFENETRE_H

@@ -1,6 +1,11 @@
 #include "basefenetre.h"
 
-BaseFenetre::BaseFenetre() : QWidget()
+BaseFenetre::BaseFenetre()
 {
-    setFixedSize(300, 150);
+    setMaximumSize(QSize(800,600));
+    QWidget *zoneCentrale = new QWidget;
+    zoneCentrale->setFixedSize(QSize(800,600));
+    zoneCentrale->setStyleSheet("background-color: black;");
+    setCentralWidget(zoneCentrale);
+
 }

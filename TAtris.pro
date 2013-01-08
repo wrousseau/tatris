@@ -15,6 +15,10 @@ TEMPLATE = app
 SOURCES += main.cpp\
         basefenetre.cpp
 
-HEADERS  += basefenetre.h
+HEADERS  += basefenetre.h \
+    Tetrimono.h \
+    Structures.h \
+    Block.h
 
-FORMS    += basefenetre.ui
+FORMS    += basefenetre.ui \
+    guimainmenu.ui
