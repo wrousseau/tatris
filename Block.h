@@ -8,23 +8,23 @@ class Block
 private:
     point coord;
     double speed;
-    int couleur;
+    color couleur;
 
 public:
-    Block(point coord, int color, bool isRand = false) {
+    Block(point coord, color colorSet, bool isRand = false) {
         if (isRand) {
-        coord.x1 = rand(coord.x1,LARGEUR_GRILLE-(coord.x2));
+        coord.x1 = rand()% LARGEUR_GRILLE;
         coord.x2 = 0;
         }
         else {
-            coord.x1 = spread.x1;
-            coord.x2 = spread.x2;
+            //coord.x1 = spread.x1;
+            //coord.x2 = spread.x2;
         }
-        couleur = color;
+        couleur = colorSet;
         //speed = 1 + Game->getLevel()/10;
     }
 
-    int getCouleur(){
+    color getCouleur(){
         return couleur;
     }
 
@@ -36,21 +36,29 @@ public:
         return speed;
     }
 
-    void setCouleur(int par1) {
-        if (i <= 7 && i >=0) {
+    void setCouleur(color par1) {
             couleur = par1;
-        }
     }
 
     int setCoord(point par1) {
-        coord = coord;
+        coord = par1;
     }
 
-    int moveBlock(int par1, int par2) {
+    bool isBlockMovable(int par1, int par2, Grille* grille){
         point target = coord;
         target.x1 += par1;
         target.x2 += par2;
-        if ((par1 == 1 || par1 == -1 || par2 == -1) && Grille.isFree(target)) {
+        if ((par1 == 1 || par1 == -1 || par2 == -1) && grille->isFree(target))
+            return true;
+        else
+            return false;
+    }
+
+    int moveBlock(int par1, int par2, Grille* grille) {
+        point target = coord;
+        target.x1 += par1;
+        target.x2 += par2;
+        if ((par1 == 1 || par1 == -1 || par2 == -1) && grille->isFree(target)) {
             coord.x1 = target.x1;
             coord.x2 = target.x2;
             return 1;

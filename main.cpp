@@ -1,4 +1,5 @@
 #include "basefenetre.h"
+#include "Grille.h"
 #include <QApplication>
 
 
