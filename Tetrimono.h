@@ -11,8 +11,8 @@ class Tetrimono
 
     int inclinaison;
     bool isOnScreen, isOnFloor;
-    virtual int numberOfBlocks;
-    virtual point spread;
+    int numberOfBlocks;
+    point spread;
     vector<Block> blockVector;
 
 public:
@@ -36,7 +36,12 @@ public:
 
 
     virtual void initializeBlocks() {
-        Block firstBlock = new Block();
+        Block firstBlock = new Block(spread);
+        blockVector.push_back(*firstBlock);
+        for (int i = 1; i < numberOfBlocks; i++) {
+            blockVector.push_back(Block())
+        }
+
     }
 };
 

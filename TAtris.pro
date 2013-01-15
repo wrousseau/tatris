@@ -18,7 +18,10 @@ SOURCES += main.cpp\
 HEADERS  += basefenetre.h \
     Tetrimono.h \
     Structures.h \
-    Block.h
+    Block.h \
+    Grille.h \
+    Constantes.h \
+    Partie.h
 
 FORMS    += basefenetre.ui \
     guimainmenu.ui
