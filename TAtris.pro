@@ -12,16 +12,24 @@ TARGET = TAtris2
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        basefenetre.cpp
+SOURCES += main.cpp \
+    GameWindow.cpp
 
-HEADERS  += basefenetre.h \
+HEADERS  += \
     Tetrimono.h \
     Structures.h \
     Block.h \
-    Grille.h \
-    Constantes.h \
-    Partie.h
+    Grid.h \
+    Game.h \
+    GameWindow.h \
+    Constantes.h
 
-FORMS    += basefenetre.ui \
-    guimainmenu.ui
+FORMS    += \
+    GameWindow.ui
+
+OTHER_FILES += \
+    ../../../../Downloads/high-quality-space-backgrounds.jpg \
+    ../../../../Downloads/galaxy.jpg
+
+RESOURCES += \
+    Ressources.qrc

@@ -1,20 +1,20 @@
-#ifndef GRILLE_H
-#define GRILLE_H
-#include "Constantes.h"
+#ifndef GRID_H
+#define GRID_H
 #include "Structures.h"
 #include "Block.h"
 
 
 
-class Grille{
+class Grid {
 
 private :
 
     color area[LARGEUR_GRILLE][HAUTEUR_GRILLE];
 
+
 public:
 
-    Grille(){
+    Grid(){
         int i=0,j=0;
         for(i=0 ; i<LARGEUR_GRILLE ; i++)
         {
@@ -38,6 +38,7 @@ public:
 
     bool isInBounds(point par1) {
         if (par1.x1 <= LARGEUR_GRILLE && par1.x1 >= 0 && par1.x2 <= HAUTEUR_GRILLE && par1.x2 >= 0) {
+
             return true;
         }
         else {
@@ -68,4 +69,4 @@ public:
 
 };
 
-#endif // GRILLE_H
+#endif // GRID_H

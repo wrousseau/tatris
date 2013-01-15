@@ -20,8 +20,10 @@ public:
             //coord.x1 = spread.x1;
             //coord.x2 = spread.x2;
         }
+
         couleur = colorSet;
         //speed = 1 + Game->getLevel()/10;
+
     }
 
     color getCouleur(){

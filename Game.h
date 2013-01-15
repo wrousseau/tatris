@@ -2,10 +2,10 @@
 #define PARTIE_H
 
 
-class Partie {
+class Game {
 
 private:
-    unsigned niveau;
+    unsigned level;
     unsigned long int score;
     bool isGameOn;
 
@@ -14,19 +14,19 @@ public:
 
     Partie() {
         isGameOn = true;
-        niveau = 1;
+        level = 1;
         score = 0;
     }
 
-    ~Partie() {}
+    ~Game() {}
 
     unsigned getLevel() {
-        return niveau;
+        return level;
     }
 
     void setLevel(unsigned par1) {
         if (par1 > 0) {
-        niveau = par1;
+        level = par1;
         }
     }
 
