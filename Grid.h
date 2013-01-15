@@ -1,17 +1,16 @@
-#ifndef GRILLE_H
-#define GRILLE_H
-#include "Constantes.h"
+#ifndef GRID_H
+#define GRID_H
 #include "Structures.h"
 
-const int HAUTEUR_GRILLE = 22;
-const int LARGEUR_GRILLE = 10;
+const int GRID_HEIGHT = 22;
+const int GRID_WIDTH = 10;
 
 
-class Grille{
+class Grid {
 
 private :
 
-    int area[LARGEUR_GRILLE][HAUTEUR_GRILLE] = {{0}};
+    int area[GRID_HEIGHT][GRID_WIDTH] = {{0}};
 
 public:
 
@@ -26,7 +25,7 @@ public:
     }
 
     bool isInBounds(par1) {
-        if (par1.x1 <= LARGEUR_GRILLE && par1.x1 >= 0 && par1.x2 <= HAUTEUR_GRILLE && par1.x2 >= 0) {
+        if (par1.x1 <= GRID_HEIGHT && par1.x1 >= 0 && par1.x2 <= GRID_WIDTH && par1.x2 >= 0) {
             return true;
         }
         else {
@@ -41,4 +40,4 @@ public:
 
 };
 
-#endif // GRILLE_H
+#endif // GRID_H

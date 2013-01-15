@@ -21,7 +21,7 @@ public:
             coord.x2 = spread.x2;
         }
         couleur = color;
-        //speed = 1 + Game->getLevel()/10;
+        speed = 1 + Game->getLevel()/10;
     }
 
     int getCouleur(){

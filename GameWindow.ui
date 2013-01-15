@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GameWindow</class>
+ <widget class="GameWindow" name="GameWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>TAtris</string>
+  </property>
+  <widget class="QWidget" name="centralWidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>601</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#centralWidget{
+background-image:url(:/ressources/ressources/high-quality-space-backgrounds.jpg);
+}</string>
+   </property>
+   <widget class="QWidget" name="GameWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>511</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#GameWidget {
+background-image:url(:/ressources/ressources/galaxy.jpg);
+}
+
+QLCDNumber {
+background-color:white;
+}</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>511</width>
+       <height>581</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="GameInterface">
+      <item row="0" column="0">
+       <widget class="QLabel" name="BonusLabel">
+        <property name="text">
+         <string>Bonus</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" rowspan="7">
+       <widget class="QFrame" name="MainGrid">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>550</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>550</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color:black;
+background-image:none;</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="NextTetrimonoLabel">
+        <property name="text">
+         <string>Pièce Suivante</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QFrame" name="BonusFrame">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QFrame" name="NextTetrimonoFrame">
+        <property name="styleSheet">
+         <string notr="true">background-color:black;
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" rowspan="3">
+       <widget class="QFrame" name="RulesFrame">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="ScoreLabel">
+        <property name="text">
+         <string>Score</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QLCDNumber" name="ScoreNumber">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QLabel" name="LevelLabel">
+        <property name="text">
+         <string>Niveau</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QLCDNumber" name="LevelNumber"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QPushButton" name="ExitButton">
+        <property name="text">
+         <string>Quitter</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QPushButton" name="BackToMenuButton">
+        <property name="text">
+         <string>Retour Menu</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>BonusLabel</zorder>
+     <zorder>NextTetrimonoLabel</zorder>
+     <zorder>BonusFrame</zorder>
+     <zorder>NextTetrimonoFrame</zorder>
+     <zorder>RulesFrame</zorder>
+     <zorder>ScoreLabel</zorder>
+     <zorder>ScoreNumber</zorder>
+     <zorder>LevelLabel</zorder>
+     <zorder>LevelNumber</zorder>
+     <zorder>ExitButton</zorder>
+     <zorder>BackToMenuButton</zorder>
+     <zorder>MainGrid</zorder>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GameWindow</class>
+   <extends>QWidget</extends>
+   <header>gamewindow.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

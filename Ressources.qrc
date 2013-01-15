@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ressources">
+        <file>ressources/high-quality-space-backgrounds.jpg</file>
+        <file>ressources/galaxy.jpg</file>
+    </qresource>
+</RCC>

@@ -1,13 +1,13 @@
-#include "basefenetre.h"
+#include "GameWindow.h"
 #include <QApplication>
 
 
 int main(int argc, char *argv[])
 {
     QApplication game(argc, argv);
-    BaseFenetre mainWindow;
+    GameWindow gameWindow;
 
-    mainWindow.show();
+    gameWindow.show();
     
     return game.exec();
 }

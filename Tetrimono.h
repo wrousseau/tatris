@@ -9,11 +9,12 @@ class Tetrimono
 {
    protected:
 
-    int inclinaison;
+    int rotation;
     bool isOnScreen, isOnFloor;
     int numberOfBlocks;
     point spread;
     vector<Block> blockVector;
+
 
 public:
 
@@ -21,12 +22,12 @@ public:
 
 };
 
-class TetrimonoCarre: public Tetrimono
+class SquareTetrimono: public Tetrimono
 {
 private:
 
 public:
-    TetrimonoCarre() {
+    SquareTetrimono() {
         numberOfBlock = 4;
         spread.x1 = 0;
         spread.x2 = 1;
