@@ -1,7 +1,7 @@
-#ifndef BLOCK_H
+/*#ifndef BLOCK_H
 #define BLOCK_H
 #include "Structures.h"
-#include "Grille.h"
+#include "Grid.h"
 
 class Block
 {
@@ -13,7 +13,7 @@ private:
 public:
     Block(point coord, int color, bool isRand = false) {
         if (isRand) {
-        coord.x1 = rand(coord.x1,LARGEUR_GRILLE-(coord.x2));
+        //coord.x1 = rand(coord.x1,Grid::GRID_WIDTH-(coord.x2));
         coord.x2 = 0;
         }
         else {
@@ -21,7 +21,7 @@ public:
             coord.x2 = spread.x2;
         }
         couleur = color;
-        speed = 1 + Game->getLevel()/10;
+        speed = 1 + (double)(Game->getLevel()/10);
     }
 
     int getCouleur(){
@@ -63,3 +63,4 @@ public:
 };
 
 #endif // BLOCK_H
+*/
