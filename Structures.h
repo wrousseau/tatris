@@ -40,4 +40,9 @@ static char valuesEnumeration[4][5][5] =
     }
 };
 
+typedef enum{
+    EMPTY, YELLOW, RED, GREEN, BLUE, PURPLE, BROWN, WHITE
+}color;
+
+
 #endif // STRUCTURES_H

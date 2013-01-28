@@ -17,13 +17,6 @@ private :
 
 public:
 
-    Grid() {
-        for (int i = 0; i< GRID_HEIGHT; i ++) {
-            for (int j = 0; j < GRID_WIDTH; j++) {
-                area[i][j] = 0;
-            }
-        }
-    }
 
     bool isFree(point par1)
     {
@@ -37,6 +30,7 @@ public:
 
     static bool isInBounds(int par1, int par2) {
         if (par1 <= GRID_WIDTH*25 && par1 >= 0 && par2 <= GRID_HEIGHT*25 && par2 >= 0) {
+
             return true;
         }
         else {
@@ -46,6 +40,19 @@ public:
 
     bool isNotOccupied(point par1) {
         return true;
+    }
+
+    bool isLineFull(int line){
+        bool test = true;
+        int i=0;
+
+        while(test)
+        {
+            if(area[i][line] == EMPTY)
+                test = false;
+            i++;
+        }
+        return test;
     }
 
 
