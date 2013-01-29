@@ -14,16 +14,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     GameWindow.cpp \
-    GridFrame.cpp
+    GridFrame.cpp \
+    Grid.cpp \
+    Tetrimono.cpp \
+    Game.cpp
 
 HEADERS  += \
     Tetrimono.h \
     Structures.h \
     Block.h \
-    Grid.h \
     Game.h \
     GameWindow.h \
-    GridFrame.h
+    GridFrame.h \
+    Grid.h
 
 FORMS    += \
     GameWindow.ui

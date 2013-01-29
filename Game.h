@@ -12,44 +12,23 @@ private:
 
 public:
 
-    Game() {
-        gameOn = true;
-        level = 1;
-        score = 0;
-    }
+    Game();
 
-    ~Game() {}
+    ~Game();
 
-    unsigned getLevel() {
-        return level;
-    }
+    unsigned getLevel();
 
-    void setLevel(unsigned par1) {
-        if (par1 > 0) {
-        level = par1;
-        }
-    }
+    void setLevel(unsigned par1);
 
-    void levelUp(){
-        level++;
-    }
+    void levelUp();
 
-    unsigned long int getScore() {
-        return score;
-    }
+    unsigned long int getScore();
 
-    void addToScore(unsigned long int par1) {
-        score += par1;
-    }
+    void addToScore(unsigned long int par1);
 
-    int gameOver() {
-        gameOn = false;
-        return score;
-    }
+    int gameOver();
 
-    bool isGameOn() {
-        return gameOn;
-    }
+    bool isGameOn();
 };
 
 #endif // PARTIE_H

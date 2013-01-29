@@ -14,6 +14,7 @@ class Tetrimono
     int rotation;
     bool onScreen, onFloor;
     int farthests[4]; // left, right, up, down
+    char values[5][5];
 
 
 
@@ -32,7 +33,7 @@ public:
     }
 
 
-    char values[5][5];
+    bool isOnScreen();
 
     void initializeValues(int par1, int par2) {
         for(int i=0; i<5; i++){
@@ -46,6 +47,10 @@ public:
                 }
             }
         }
+    }
+
+    char getValues(int i, int j) {
+        return values[i][j];
     }
 
 
@@ -121,9 +126,9 @@ public:
         return 0;
     }
 
+
     ~Tetrimono(){};
 };
-
 
 
 
