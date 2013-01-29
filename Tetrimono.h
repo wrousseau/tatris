@@ -21,7 +21,12 @@ public:
 
     char values[5][5];
 
-    virtual void initializeValues() = 0;
+    virtual void initializeValues(int par1) = 0;
+
+    void rotate() {
+        rotation = (rotation + 1) % 4;
+        initializeValues(rotation);
+    }
 
     bool isOnScreen() {
         return onScreen;
@@ -39,7 +44,7 @@ public:
     }
 
     int getRightBound() {
-        return coord.x1 + 100 - farthests[1];
+        return coord.x1 + 125 - farthests[1];
     }
 
     int getUpperBound() {
@@ -47,7 +52,7 @@ public:
     }
 
     int getLowerBound() {
-        return coord.x2 + 100 - farthests[3];
+        return coord.x2 + 125 - farthests[3];
     }
 
     int getY() {
@@ -64,15 +69,18 @@ public:
     }
 
     int fall(int par1) {
-        if (Grid::isInBounds(getX(),getLowerBound()+par1)) {
+        if (Grid::isInBounds(getLeftBound(),getLowerBound()+par1)) {
         coord.x2 += par1;
+        if (getLowerBound() == 25*22) {
+            onFloor = true;
+        }
         return 1;
         }
         return 0;
     }
 
     int moveLeft() {
-        if (Grid::isInBounds(getLeftBound()-25,coord.x2)) {
+        if (Grid::isInBounds(getLeftBound()-25,coord.x2) && !onFloor) {
         coord.x1 -= 25;
         return 1;
         }
@@ -80,16 +88,13 @@ public:
     }
 
     int moveRight() {
-        if (Grid::isInBounds(getRightBound()+25,coord.x2)){
-        coord.x1 =+ 25;
+        if (Grid::isInBounds(getRightBound()+25,coord.x2) && !onFloor){
+        coord.x1 += 25;
         return 1;
         }
         return 0;
     }
-
     virtual ~Tetrimono(){};
-
-
 };
 
 class SquareTetrimono: public Tetrimono
@@ -99,24 +104,27 @@ private:
 public:
     SquareTetrimono() {
         numberOfBlocks = 4;
-        initializeValues();
+        onFloor = false;
+        coord.x1=0;
+        coord.x2=0;
+        rotation = 0;
+        initializeValues(rotation);
     }
 
 
 
-    void initializeValues() {
+    void initializeValues(int par1) {
         for(int i=0; i<5; i++){
             for(int j=0; j<5 ; j++){
-                values[i][j]=valuesEnumeration[0][0][i][j];
+                values[i][j]=valuesEnumeration[0][par1][i][j];
             }
         }
         farthests[0] = 50;
         farthests[1] = 25;
         farthests[2] = 50;
         farthests[3] = 25;
-
-
     }
+
 };
 
 #endif // TETRIMONO_H

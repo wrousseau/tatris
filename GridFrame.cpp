@@ -22,11 +22,10 @@ void GridFrame::paintEvent(QPaintEvent*)
     for (int i = 0; i < 5; i ++) {
         for (int j = 0; j < 5; j++) {
             if (currentTetrimono.values[i][j] != 0) {
-                p.drawRect(currentTetrimono.getX()+i,currentTetrimono.getY()+j,25,25);
+                p.drawRect(currentTetrimono.getX()+i*25,currentTetrimono.getY()+j*25,25,25);
             }
         }
     }
-    p.drawRect(coord.x1,coord.x2,50,50);
     p.end();
 
 }
