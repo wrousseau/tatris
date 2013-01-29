@@ -14,7 +14,7 @@ class Tetrimono
     int rotation;
     bool onScreen, onFloor;
     int farthests[4]; // left, right, up, down
-    char values[5];
+    char values[5][5];
 
 
 
