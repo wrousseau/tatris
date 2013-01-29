@@ -27,9 +27,6 @@ public slots:
     void keyPressEvent( QKeyEvent *k );
     void update();
     void setTetrimono(Tetrimono& par1Tetrimono);
-
-
-    
 };
 
 #endif // GRIDFRAME_H

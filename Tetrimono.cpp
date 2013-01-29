@@ -1,10 +1,12 @@
 #include "Tetrimono.h"
+#include "QDebug"
 
 Tetrimono::Tetrimono(int par1) {
     onFloor = false;
     coord.x1=0;
     coord.x2=0;
     rotation = 0;
+    blockType = par1;
     farthests[0] = 125;
     farthests[1] = 125;
     farthests[2] = 125;
@@ -12,23 +14,30 @@ Tetrimono::Tetrimono(int par1) {
     initializeValues(par1, rotation);
 }
 
+Tetrimono::~Tetrimono() {
+}
+
 void Tetrimono::initializeValues(int par1, int par2) {
+    int count = 0;
     for(int i=0; i<5; i++){
         for(int j=0; j<5 ; j++){
+            qDebug() << par1 << par2 << (int) valuesEnumeration[par1][par2][i][j];
             values[i][j]=valuesEnumeration[par1][par2][i][j];
             if (values[i][j] != 0) {
-                farthests[0] = (farthests[0] > j*25) ? j : farthests[0];
+                count++;
+                farthests[0] = (farthests[0] > j*25) ? j*25 : farthests[0];
                 farthests[1] = (farthests[1] > (125-j*25)) ? (125-j*25) : farthests[1];
-                farthests[2] = (farthests[2] > i*25) ? i : farthests[2];
+                farthests[2] = (farthests[2] > i*25) ? i*25 : farthests[2];
                 farthests[3] = (farthests[3] > (125-i*25)) ? (125-i*25) : farthests[3];
             }
         }
     }
+    qDebug() << count;
 }
 
 void Tetrimono::rotate() {
     rotation = (rotation + 1) % 4;
-    initializeValues(type,rotation);
+    initializeValues(blockType,rotation);
 }
 
 bool Tetrimono::isOnScreen() {

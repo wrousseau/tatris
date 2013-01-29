@@ -73,7 +73,7 @@ static char valuesEnumeration[2][4][5][5] =
 };
 
 typedef enum{
-    EMPTY, YELLOW, RED, GREEN, BLUE, PURPLE, BROWN, WHITE
+    EMPTY, RED, YELLOW, GREEN, BLUE, PURPLE, BROWN, WHITE
 } blockColor;
 
 

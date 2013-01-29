@@ -23,7 +23,7 @@ bool Grid::isFree(point par1)
 
 
 bool Grid::isNotOccupied(point par1) {
-    if(area[par1.x1][par1.x2] == EMPTY)
+    if(area[par1.x1][par1.x2] == RED)
         return true;
     else
         return false;
@@ -41,3 +41,12 @@ bool Grid::isLineFull(int line){
     }
     return test;
 }
+
+/*void Grid::fillGrid(Tetrimono par1Tetrimono) {
+    for (int i = 0; i < 5; i ++) {
+        for (int j = 0; j < 5; j ++) {
+            areacurrentTetrimono.getValues(i, j) != 0) {
+
+        }
+    }
+}*/

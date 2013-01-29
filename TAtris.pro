@@ -17,15 +17,11 @@ SOURCES += main.cpp \
     GridFrame.cpp \
     Grid.cpp \
     Tetrimono.cpp \
-    Game.cpp \
-    Tetrimono.cpp \
-    Grid.cpp \
     Game.cpp
 
 HEADERS  += \
     Tetrimono.h \
     Structures.h \
-    Block.h \
     Game.h \
     GameWindow.h \
     GridFrame.h \

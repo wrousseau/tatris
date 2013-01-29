@@ -1,4 +1,5 @@
 #include "GridFrame.h"
+#include "QDebug"
 
 GridFrame::GridFrame(QWidget *parent) :
     QFrame(parent)
@@ -22,7 +23,7 @@ void GridFrame::paintEvent(QPaintEvent*)
     for (int i = 0; i < 5; i ++) {
         for (int j = 0; j < 5; j++) {
             if (currentTetrimono.getValues(i, j) != 0) {
-                p.drawRect(currentTetrimono.getX()+i,currentTetrimono.getY()+j,25,25);
+                p.drawRect(currentTetrimono.getX()+25*i,currentTetrimono.getY()+25*j,25,25);
             }
         }
     }
@@ -56,6 +57,10 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
 void GridFrame::update() {
     currentTetrimono.fall(25);
     repaint();
+    if (currentTetrimono.isOnFloor()) {
+        //Grid::fillGrid(currentTetrimono);
+        currentTetrimono = Tetrimono(0);
+    }
     QWidget::update();
 }
 
