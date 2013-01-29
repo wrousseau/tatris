@@ -15,7 +15,7 @@ class GridFrame : public QFrame
 
 private:
     point coord;
-    TetrimonoCarre currentTetrimono;
+    SquareTetrimono currentTetrimono;
 
 public:
     explicit GridFrame(QWidget *parent = 0);

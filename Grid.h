@@ -13,7 +13,7 @@ public:
     static const int GRID_WIDTH = 10;
 
 private :
-    int area[GRID_HEIGHT][GRID_WIDTH];
+    blockColor area[GRID_HEIGHT][GRID_WIDTH];
 
 public:
 
@@ -39,7 +39,10 @@ public:
     }
 
     bool isNotOccupied(point par1) {
-        return true;
+        if(area[par1.x1][par1.x2] == EMPTY)
+            return true;
+        else
+            return false;
     }
 
     bool isLineFull(int line){

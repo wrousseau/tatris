@@ -19,7 +19,7 @@ class Tetrimono
 public:
 
 
-    char*** values;
+    char values[5][5];
 
     virtual void initializeValues() = 0;
 
@@ -105,7 +105,11 @@ public:
 
 
     void initializeValues() {
-        ***values = valuesEnumeration;
+        for(int i=0; i<5; i++){
+            for(int j=0; j<5 ; j++){
+                values[i][j]=valuesEnumeration[0][0][i][j];
+            }
+        }
         farthests[0] = 50;
         farthests[1] = 25;
         farthests[2] = 50;
