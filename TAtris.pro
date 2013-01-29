@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     GameWindow.cpp \
     GridFrame.cpp \
     Grid.cpp \
-    Tetrimono.cpp
+    Tetrimono.cpp \
+    Game.cpp
 
 HEADERS  += \
     Tetrimono.h \
