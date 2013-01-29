@@ -10,26 +10,32 @@ class Tetrimono
    protected:
 
     point coord;
+    int type;
     int rotation;
     bool onScreen, onFloor;
-    int numberOfBlocks;
     int farthests[4]; // left, right, up, down
-    char values[5][5];
+    char values[5];
 
 
 
 public:
 
-    virtual void initializeValues() = 0;
+    Tetrimono(int par1);
+
+
+
+    void initializeValues(int par1, int par2);
+
+    char getValues(int i, int j);
+
+
+    void rotate();
 
     bool isOnScreen();
 
     bool isOnFloor();
 
-    char getValues(int i, int j);
-
     int getX();
-
     int getLeftBound();
 
     int getRightBound();
@@ -44,26 +50,17 @@ public:
 
     void setY(int par1);
 
+
     int fall(int par1);
 
     int moveLeft();
 
     int moveRight();
 
-    virtual ~Tetrimono(){};
-
-
+    ~Tetrimono();
 };
 
-class SquareTetrimono: public Tetrimono
-{
-private:
 
-public:
 
-    SquareTetrimono();
-
-    void initializeValues();
-};
 
 #endif // TETRIMONO_H

@@ -15,7 +15,7 @@ class GridFrame : public QFrame
 
 private:
     point coord;
-    SquareTetrimono currentTetrimono;
+    Tetrimono currentTetrimono;
 
 public:
     explicit GridFrame(QWidget *parent = 0);
@@ -26,6 +26,7 @@ public slots:
     void paintEvent(QPaintEvent*);
     void keyPressEvent( QKeyEvent *k );
     void update();
+    void setTetrimono(Tetrimono& par1Tetrimono);
 
 
     
