@@ -2,6 +2,7 @@
 #define TETRIMONO_H
 
 #include "Structures.h"
+#include "Grid.h"
 #include <vector>
 
 class Tetrimono
@@ -13,79 +14,41 @@ class Tetrimono
     bool onScreen, onFloor;
     int numberOfBlocks;
     int farthests[4]; // left, right, up, down
+    char values[5][5];
 
 
 
 public:
 
-
-    char values[5][5];
-
     virtual void initializeValues() = 0;
 
-    bool isOnScreen() {
-        return onScreen;
-    }
-    bool isOnFloor() {
-        return onFloor;
-    }
+    bool isOnScreen();
 
-    int getX() {
-        return coord.x1;
-    }
+    bool isOnFloor();
 
-    int getLeftBound() {
-        return coord.x1 + farthests[0];
-    }
+    char getValues(int i, int j);
 
-    int getRightBound() {
-        return coord.x1 + 100 - farthests[1];
-    }
+    int getX();
 
-    int getUpperBound() {
-        return coord.x2 + farthests[2];
-    }
+    int getLeftBound();
 
-    int getLowerBound() {
-        return coord.x2 + 100 - farthests[3];
-    }
+    int getRightBound();
 
-    int getY() {
-        return coord.x2;
-    }
+    int getUpperBound();
 
-    void setX(int par1) {
-        coord.x1 = par1;
-    }
+    int getLowerBound();
 
-    void setY(int par1) {
+    int getY();
 
-        coord.x2 = par1;
-    }
+    void setX(int par1);
 
-    int fall(int par1) {
-        if (Grid::isInBounds(getX(),getLowerBound()+par1)) {
-        coord.x2 += par1;
-        return 1;
-        }
-        return 0;
-    }
+    void setY(int par1);
 
-    int moveLeft() {
-        if (Grid::isInBounds(getLeftBound()-25,coord.x2)) {
-        coord.x1 -= 25;
-        return 1;
-        }
-        return 0;
-    }
+    int fall(int par1);
 
-    int moveRight() {
-        if (Grid::isInBounds(getRightBound()+25,coord.x2)){
-        coord.x1 =+ 25;
-        return 1;
-        }
-        return 0;
-    }
+    int moveLeft();
+
+    int moveRight();
 
     virtual ~Tetrimono(){};
 
@@ -97,26 +60,10 @@ class SquareTetrimono: public Tetrimono
 private:
 
 public:
-    SquareTetrimono() {
-        numberOfBlocks = 4;
-        initializeValues();
-    }
 
+    SquareTetrimono();
 
-
-    void initializeValues() {
-        for(int i=0; i<5; i++){
-            for(int j=0; j<5 ; j++){
-                values[i][j]=valuesEnumeration[0][0][i][j];
-            }
-        }
-        farthests[0] = 50;
-        farthests[1] = 25;
-        farthests[2] = 50;
-        farthests[3] = 25;
-
-
-    }
+    void initializeValues();
 };
 
 #endif // TETRIMONO_H
