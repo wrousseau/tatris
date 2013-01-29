@@ -2,6 +2,7 @@
 #define TETRIMONO_H
 
 #include "Structures.h"
+#include "Grid.h"
 #include <vector>
 
 class Tetrimono
@@ -9,23 +10,48 @@ class Tetrimono
    protected:
 
     point coord;
+    int type;
     int rotation;
     bool onScreen, onFloor;
-    int numberOfBlocks;
     int farthests[4]; // left, right, up, down
 
 
 
 public:
 
+    Tetrimono(int par1) {
+        onFloor = false;
+        coord.x1=0;
+        coord.x2=0;
+        rotation = 0;
+        farthests[0] = 125;
+        farthests[1] = 125;
+        farthests[2] = 125;
+        farthests[3] = 125;
+        initializeValues(par1, rotation);
+    }
+
 
     char values[5][5];
 
-    virtual void initializeValues(int par1) = 0;
+    void initializeValues(int par1, int par2) {
+        for(int i=0; i<5; i++){
+            for(int j=0; j<5 ; j++){
+                values[i][j]=valuesEnumeration[par1][par2][i][j];
+                if (values[i][j] != 0) {
+                    farthests[0] = (farthests[0] > j*25) ? j : farthests[0];
+                    farthests[1] = (farthests[1] > (125-j*25)) ? (125-j*25) : farthests[1];
+                    farthests[2] = (farthests[2] > i*25) ? i : farthests[2];
+                    farthests[3] = (farthests[3] > (125-i*25)) ? (125-i*25) : farthests[3];
+                }
+            }
+        }
+    }
+
 
     void rotate() {
         rotation = (rotation + 1) % 4;
-        initializeValues(rotation);
+        initializeValues(type,rotation);
     }
 
     bool isOnScreen() {
@@ -94,37 +120,12 @@ public:
         }
         return 0;
     }
-    virtual ~Tetrimono(){};
+
+    ~Tetrimono(){};
 };
 
-class SquareTetrimono: public Tetrimono
-{
-private:
-
-public:
-    SquareTetrimono() {
-        numberOfBlocks = 4;
-        onFloor = false;
-        coord.x1=0;
-        coord.x2=0;
-        rotation = 0;
-        initializeValues(rotation);
-    }
 
 
 
-    void initializeValues(int par1) {
-        for(int i=0; i<5; i++){
-            for(int j=0; j<5 ; j++){
-                values[i][j]=valuesEnumeration[0][par1][i][j];
-            }
-        }
-        farthests[0] = 50;
-        farthests[1] = 25;
-        farthests[2] = 50;
-        farthests[3] = 25;
-    }
-
-};
 
 #endif // TETRIMONO_H

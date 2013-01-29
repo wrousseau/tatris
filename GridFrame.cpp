@@ -7,8 +7,8 @@ GridFrame::GridFrame(QWidget *parent) :
     this->setFocusPolicy(Qt::StrongFocus);
 
     QTimer *timer = new QTimer(this);
-       connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-       timer->start(1000);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    timer->start(1000);
 
 }
 
@@ -47,6 +47,9 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
                 currentTetrimono.fall(25);
                 repaint();
                 break;
+            case Qt::Key_Space:
+                currentTetrimono.rotate();
+                break;
         }
 }
 
@@ -54,4 +57,8 @@ void GridFrame::update() {
     currentTetrimono.fall(25);
     repaint();
     QWidget::update();
+}
+
+void GridFrame::setTetrimono(Tetrimono& par1Tetrimono) {
+    currentTetrimono = par1Tetrimono;
 }
