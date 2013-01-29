@@ -13,7 +13,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    GameWindow.cpp
+    GameWindow.cpp \
+    GridFrame.cpp
 
 HEADERS  += \
     Tetrimono.h \
@@ -22,7 +23,7 @@ HEADERS  += \
     Grid.h \
     Game.h \
     GameWindow.h \
-    Constantes.h
+    GridFrame.h
 
 FORMS    += \
     GameWindow.ui

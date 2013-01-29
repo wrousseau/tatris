@@ -1,34 +1,26 @@
 #ifndef GRID_H
 #define GRID_H
 #include "Structures.h"
-#include "Block.h"
+#include "qpainter.h"
+
 
 
 
 class Grid {
 
+public:
+    static const int GRID_HEIGHT = 22;
+    static const int GRID_WIDTH = 10;
+
 private :
-
-    color area[LARGEUR_GRILLE][HAUTEUR_GRILLE];
-
+    int area[GRID_HEIGHT][GRID_WIDTH];
 
 public:
-
-    Grid(){
-        int i=0,j=0;
-        for(i=0 ; i<LARGEUR_GRILLE ; i++)
-        {
-            for(j=0 ; j<HAUTEUR_GRILLE ; j++)
-            {
-                area[i][j]=EMPTY;
-            }
-        }
-    }
 
 
     bool isFree(point par1)
     {
-        if (isInBounds(par1) && isNotOccupied(par1)) {
+        if (isInBounds(par1.x1,par1.x2) && isNotOccupied(par1)) {
             return true;
         }
         else {
@@ -36,8 +28,8 @@ public:
         }
     }
 
-    bool isInBounds(point par1) {
-        if (par1.x1 <= LARGEUR_GRILLE && par1.x1 >= 0 && par1.x2 <= HAUTEUR_GRILLE && par1.x2 >= 0) {
+    static bool isInBounds(int par1, int par2) {
+        if (par1 <= GRID_WIDTH*25 && par1 >= 0 && par2 <= GRID_HEIGHT*25 && par2 >= 0) {
 
             return true;
         }
@@ -47,10 +39,7 @@ public:
     }
 
     bool isNotOccupied(point par1) {
-        if(area[par1.x1][par1.x2] == EMPTY)
-            return true;
-        else
-            return false;
+        return true;
     }
 
     bool isLineFull(int line){

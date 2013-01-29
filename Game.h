@@ -7,13 +7,13 @@ class Game {
 private:
     unsigned level;
     unsigned long int score;
-    bool isGameOn;
+    bool gameOn;
 
 
 public:
 
-    Partie() {
-        isGameOn = true;
+    Game() {
+        gameOn = true;
         level = 1;
         score = 0;
     }
@@ -31,7 +31,7 @@ public:
     }
 
     void levelUp(){
-        niveau++;
+        level++;
     }
 
     unsigned long int getScore() {
@@ -43,8 +43,12 @@ public:
     }
 
     int gameOver() {
-        isGameOn = false;
+        gameOn = false;
         return score;
+    }
+
+    bool isGameOn() {
+        return gameOn;
     }
 };
 

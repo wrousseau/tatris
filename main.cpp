@@ -1,14 +1,24 @@
 
 #include "GameWindow.h"
+#include "Game.h"
+//#include "Tetrimono.h"
 #include <QApplication>
 
 
 int main(int argc, char *argv[])
 {
-    QApplication game(argc, argv);
-    GameWindow gameWindow;
+    QApplication app(argc, argv);
 
+    Game* game = new Game();
+    GameWindow gameWindow;
     gameWindow.show();
-    
-    return game.exec();
+
+    //Tetrimono* blockOnScreen = new Tetrimono();
+    //while (!blockOnScreen->isOnFloor()) {
+
+    //}
+
+
+
+    return app.exec();
 }

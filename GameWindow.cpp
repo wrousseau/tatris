@@ -1,4 +1,5 @@
 #include "GameWindow.h"
+#include "QPainter.h"
 #include "ui_GameWindow.h"
 
 GameWindow::GameWindow(QWidget *parent) :
@@ -17,3 +18,4 @@ void GameWindow::on_ExitButton_clicked()
 {
     QApplication::exit();
 }
+

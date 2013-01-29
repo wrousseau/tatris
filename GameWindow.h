@@ -18,6 +18,7 @@ public:
 private slots:
     void on_ExitButton_clicked();
 
+
 private:
     Ui::GameWindow *ui;
 };
