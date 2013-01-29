@@ -105,7 +105,7 @@ public:
 
 
     void initializeValues() {
-        values = &valuesEnumeration;
+        ***values = valuesEnumeration;
         farthests[0] = 50;
         farthests[1] = 25;
         farthests[2] = 50;
