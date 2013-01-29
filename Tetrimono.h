@@ -33,6 +33,7 @@ class Tetrimono
         int moveLeft();
         int moveRight();
         ~Tetrimono();
+
 };
 
 
