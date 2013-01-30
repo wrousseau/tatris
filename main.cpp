@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     Game* game = new Game();
 
-    int i = 1;
+    int i = rand() % 3;
     Tetrimono nextBlock(i);
 
     GameWindow gameWindow(nextBlock);

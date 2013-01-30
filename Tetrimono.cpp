@@ -11,7 +11,7 @@ Tetrimono::Tetrimono(int par1) {
     farthests[1] = 125;
     farthests[2] = 125;
     farthests[3] = 125;
-    initializeValues(par1, rotation);
+    initializeValues(par1, 0);
 }
 
 Tetrimono::~Tetrimono() {
@@ -21,18 +21,17 @@ void Tetrimono::initializeValues(int par1, int par2) {
     int count = 0;
     for(int i=0; i<5; i++){
         for(int j=0; j<5 ; j++){
-            qDebug() << par1 << par2 << (int) valuesEnumeration[par1][par2][i][j];
             values[i][j]=valuesEnumeration[par1][par2][i][j];
             if (values[i][j] != 0) {
-                count++;
-                farthests[0] = (farthests[0] > j*25) ? j*25 : farthests[0];
-                farthests[1] = (farthests[1] > (125-j*25)) ? (125-j*25) : farthests[1];
-                farthests[2] = (farthests[2] > i*25) ? i*25 : farthests[2];
-                farthests[3] = (farthests[3] > (125-i*25)) ? (125-i*25) : farthests[3];
+                farthests[0] = (farthests[0] >= j*25) ? j*25 : farthests[0];
+                farthests[1] = (farthests[1] >= (125-j*25)) ? (125-j*25-25) : farthests[1];
+                farthests[2] = (farthests[2] >= i*25) ? i*25 : farthests[2];
+                farthests[3] = (farthests[3] >= (125-i*25)) ? (125-i*25-25) : farthests[3];
             }
         }
     }
-    qDebug() << count;
+    qDebug() << "lol" << farthests[0] << farthests[1] << farthests[2] << farthests[3];
+
 }
 
 void Tetrimono::rotate() {
