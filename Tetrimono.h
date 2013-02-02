@@ -11,13 +11,14 @@ class Tetrimono
         int blockType;
         int rotation;
         bool onScreen, onFloor;
+        Grid* grid;
         int farthests[4]; // left, right, up, down
-        char values[5][5];
+        short values[5][5];
 
     public:
-        Tetrimono(int par1 = 0);
+        Tetrimono(int par1, Grid* par2Grid);
         void initializeValues(int par1, int par2);
-        char getValues(int i, int j);
+        short getValues(int i, int j);
         void rotate();
         bool isOnScreen();
         bool isOnFloor();
@@ -35,6 +36,8 @@ class Tetrimono
         ~Tetrimono();
 
 };
+
+
 
 
 

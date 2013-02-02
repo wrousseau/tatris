@@ -2,7 +2,8 @@
 #define GRID_H
 #include "Structures.h"
 #include "qpainter.h"
-#include "Tetrimono.h"
+
+class Tetrimono;
 
 enum
 {
@@ -14,14 +15,21 @@ enum
 class Grid {
 
 private :
-    blockColor area[GRID_HEIGHT][GRID_WIDTH];
+    short area[GRID_HEIGHT][GRID_WIDTH];
+    int highest;
 
 public:
+    Grid();
+    ~Grid();
     bool isFree(point par1);
-    static bool isInBounds(int par1, int par2);
+    bool isInBounds(int par1, int par2);
     bool isNotOccupied(point par1);
     bool isLineFull(int line);
-    //static void fillGrid(Tetrimono par1Tetrimono);
+    void fillGrid(Tetrimono* par1Tetrimono);
+    short getValues(int i, int j);
+    int getHighest();
+    void setHighest(int par1);
+    void printArea();
 
 };
 

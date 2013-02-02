@@ -15,7 +15,8 @@ class GridFrame : public QFrame
 
 private:
     point coord;
-    Tetrimono currentTetrimono;
+    Tetrimono *currentTetrimono;
+    Grid *grid;
 
 public:
     explicit GridFrame(QWidget *parent = 0);
@@ -26,7 +27,8 @@ public slots:
     void paintEvent(QPaintEvent*);
     void keyPressEvent( QKeyEvent *k );
     void update();
-    void setTetrimono(Tetrimono& par1Tetrimono);
+    void setTetrimono(Tetrimono* par1Tetrimono);
+    void setGrid(Grid* par1Grid);
 };
 
 #endif // GRIDFRAME_H

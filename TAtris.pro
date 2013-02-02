@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = TAtris2
 TEMPLATE = app
 
+CONFIG += console
+
 
 SOURCES += main.cpp \
     GameWindow.cpp \

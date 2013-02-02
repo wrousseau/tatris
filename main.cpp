@@ -1,6 +1,7 @@
 
 #include "GameWindow.h"
 #include "Game.h"
+#include "Grid.h"
 #include "Tetrimono.h"
 #include <QApplication>
 #include <time.h>
@@ -15,9 +16,10 @@ int main(int argc, char *argv[])
     Game* game = new Game();
 
     int i = rand() % 3;
-    Tetrimono nextBlock(i);
+    Grid* grille = new Grid();
+    Tetrimono nextBlock(i, grille);
 
-    GameWindow gameWindow(nextBlock);
+    GameWindow gameWindow(nextBlock,grille);
 
     gameWindow.show();
 

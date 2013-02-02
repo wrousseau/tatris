@@ -2,7 +2,8 @@
 #define GAMEWINDOW_H
 
 #include <QWidget>
-#include "Tetrimono.h"
+class Tetrimono;
+class Grid;
 
 namespace Ui {
 class GameWindow;
@@ -13,7 +14,7 @@ class GameWindow : public QWidget
     Q_OBJECT
     
 public:
-    explicit GameWindow(Tetrimono& par1Tetrimono, QWidget *parent = 0);
+    explicit GameWindow(Tetrimono& par1Tetrimono, Grid* par2Grid, QWidget *parent = 0);
     ~GameWindow();
     
 private slots:
@@ -23,7 +24,8 @@ private slots:
 
 private:
     Ui::GameWindow *ui;
-    void sendTetrimonoToGridFrame(Tetrimono& par1Tetrimono);
+    void sendTetrimonoToGridFrame(Tetrimono* par1Tetrimono);
+    void sendGridToGridFrame(Grid* par1Grid);
 
 };
 

@@ -1,11 +1,14 @@
 #include "Tetrimono.h"
 #include "QDebug"
+#include "Grid.h"
 
-Tetrimono::Tetrimono(int par1) {
+
+Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     onFloor = false;
     coord.x1=0;
     coord.x2=0;
     rotation = 0;
+    grid = par2Grid;
     blockType = par1;
     farthests[0] = 125;
     farthests[1] = 125;
@@ -30,7 +33,6 @@ void Tetrimono::initializeValues(int par1, int par2) {
             }
         }
     }
-    qDebug() << "lol" << farthests[0] << farthests[1] << farthests[2] << farthests[3];
 
 }
 
@@ -46,7 +48,7 @@ bool Tetrimono::isOnFloor() {
     return onFloor;
 }
 
-char Tetrimono::getValues(int i, int j){
+short Tetrimono::getValues(int i, int j){
     return values[i][j];
 }
 
@@ -84,18 +86,21 @@ void Tetrimono::setY(int par1) {
 }
 
 int Tetrimono::fall(int par1) {
-    if (Grid::isInBounds(getLeftBound(),getLowerBound()+par1)) {
+    if (grid->isInBounds(getLeftBound(),getLowerBound()+par1)) {
     coord.x2 += par1;
-    if (getLowerBound() == 25*22) {
-        onFloor = true;
-    }
     return 1;
+    }
+    if (!onFloor) {
+    onFloor = true;
+    grid->fillGrid(this);
+    qDebug() << "heeere";
+    grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[3])/25);
     }
     return 0;
 }
 
 int Tetrimono::moveLeft() {
-    if (Grid::isInBounds(getLeftBound()-25,coord.x2) && !onFloor) {
+    if (grid->isInBounds(getLeftBound()-25,coord.x2) && !onFloor) {
     coord.x1 -= 25;
     return 1;
     }
@@ -103,7 +108,7 @@ int Tetrimono::moveLeft() {
 }
 
 int Tetrimono::moveRight() {
-    if (Grid::isInBounds(getRightBound()+25,coord.x2) && !onFloor){
+    if (grid->isInBounds(getRightBound()+25,coord.x2) && !onFloor){
     coord.x1 += 25;
     return 1;
     }
