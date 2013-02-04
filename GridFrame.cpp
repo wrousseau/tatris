@@ -65,6 +65,7 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
 
 void GridFrame::update() {
     currentTetrimono->fall(25);
+    qDebug() << "glaouch";
     repaint();
     if (currentTetrimono->isOnFloor()) {
         qDebug() << "theere";

@@ -10,7 +10,7 @@ Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     rotation = 0;
     grid = par2Grid;
     blockType = par1;
-    farthests[0] = 125;
+    farthests[0] = 125;// par défaut on le met à 5 cases (125px)
     farthests[1] = 125;
     farthests[2] = 125;
     farthests[3] = 125;
@@ -24,12 +24,16 @@ void Tetrimono::initializeValues(int par1, int par2) {
     int count = 0;
     for(int i=0; i<5; i++){
         for(int j=0; j<5 ; j++){
-            values[i][j]=valuesEnumeration[par1][par2][i][j];
+            values[i][j]=valuesEnumeration[par1][par2][i][j]; //cf Structures.h
             if (values[i][j] != 0) {
-                farthests[0] = (farthests[0] >= j*25) ? j*25 : farthests[0];
-                farthests[1] = (farthests[1] >= (125-j*25)) ? (125-j*25-25) : farthests[1];
-                farthests[2] = (farthests[2] >= i*25) ? i*25 : farthests[2];
-                farthests[3] = (farthests[3] >= (125-i*25)) ? (125-i*25-25) : farthests[3];
+                if(farthests[0] >= j*25)
+                    farthests[0] = j*25;
+                if(farthests[1] >= (125-j*25))
+                    farthests[1] = (125-j*25-25);
+                if(farthests[2] >= i*25)
+                    farthests[2] = i*25;
+                if(farthests[3] >= (125-i*25))
+                    farthests[3] = (125-i*25-25);
             }
         }
     }
@@ -38,7 +42,7 @@ void Tetrimono::initializeValues(int par1, int par2) {
 
 void Tetrimono::rotate() {
     rotation = (rotation + 1) % 4;
-    initializeValues(blockType,rotation);
+    initializeValues(blockType, rotation);
 }
 
 bool Tetrimono::isOnScreen() {
@@ -87,14 +91,15 @@ void Tetrimono::setY(int par1) {
 
 int Tetrimono::fall(int par1) {
     if (grid->isInBounds(getLeftBound(),getLowerBound()+par1)) {
-    coord.x2 += par1;
-    return 1;
+        coord.x2 += par1;
+        return 1;
     }
     if (!onFloor) {
-    onFloor = true;
-    grid->fillGrid(this);
-    qDebug() << "heeere";
-    grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[3])/25);
+        onFloor = true;
+        grid->fillGrid(this);
+        qDebug() << "heeere";
+        grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[3])/25); // SEG_FAULT
+        qDebug() << "babouche";
     }
     return 0;
 }

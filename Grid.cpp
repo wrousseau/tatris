@@ -57,7 +57,7 @@ void Grid::fillGrid(Tetrimono* par1Tetrimono) {
     for (int i = 0; i < 5; i ++) {
         for (int j = 0; j < 5; j ++) {
             if (par1Tetrimono->getValues(i,j) != 0) {
-            area[par1Tetrimono->getX()/25+i][par1Tetrimono->getY()/25+j]=par1Tetrimono->getValues(i, j);
+            //area[par1Tetrimono->getX()/25+i][par1Tetrimono->getY()/25+j]=par1Tetrimono->getValues(i, j);
             qDebug() << "whhat";
             }
 
