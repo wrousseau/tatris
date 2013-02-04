@@ -62,7 +62,7 @@ void Grid::fillGrid(Tetrimono* par1Tetrimono) {
                 qDebug() << par1Tetrimono->getY()/25+j;
                 qDebug() << par1Tetrimono->getValues(i, j);
                 std::cout << std::endl;
-                area[par1Tetrimono->getY()/25+j][par1Tetrimono->getX()/25+i]=par1Tetrimono->getColor();//par1Tetrimono->getValues(i, j);
+                area[par1Tetrimono->getY()/25+i][par1Tetrimono->getX()/25+j]=par1Tetrimono->getColor();//par1Tetrimono->getValues(i, j);
 
             }
 
