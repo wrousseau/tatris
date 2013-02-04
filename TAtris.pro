@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     GridFrame.cpp \
     Grid.cpp \
     Tetrimono.cpp \
-    Game.cpp
+    Game.cpp \
+    testwidget.cpp
 
 HEADERS  += \
     Tetrimono.h \
@@ -27,10 +28,12 @@ HEADERS  += \
     Game.h \
     GameWindow.h \
     GridFrame.h \
-    Grid.h
+    Grid.h \
+    testwidget.h
 
 FORMS    += \
-    GameWindow.ui
+    GameWindow.ui \
+    testwidget.ui
 
 OTHER_FILES += \
     ../../../../Downloads/high-quality-space-backgrounds.jpg \
