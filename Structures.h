@@ -106,7 +106,7 @@ static short valuesEnumeration[3][4][5][5] =
 };
 
 typedef enum{
-    EMPTY, RED, YELLOW, GREEN, BLUE, PURPLE, BROWN, WHITE
+    EMPTY, RED, YELLOW, GREEN, BLUE, PURPLE, BROWN, ORANGE
 } blockColor;
 
 

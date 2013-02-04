@@ -7,7 +7,7 @@ Grid::Grid() {
     highest = GRID_HEIGHT - 1;
     for (int i = 0; i < GRID_HEIGHT; i++) {
         for (int j = 0; j < GRID_WIDTH; j++) {
-            area[i][j] = 0;
+            area[i][j] = EMPTY;
         }
     }
 }
@@ -62,7 +62,7 @@ void Grid::fillGrid(Tetrimono* par1Tetrimono) {
                 qDebug() << par1Tetrimono->getY()/25+j;
                 qDebug() << par1Tetrimono->getValues(i, j);
                 std::cout << std::endl;
-                area[par1Tetrimono->getY()/25+j][par1Tetrimono->getX()/25+i]=par1Tetrimono->getValues(i, j);
+                area[par1Tetrimono->getY()/25+j][par1Tetrimono->getX()/25+i]=par1Tetrimono->getColor();//par1Tetrimono->getValues(i, j);
 
             }
 
@@ -72,7 +72,7 @@ void Grid::fillGrid(Tetrimono* par1Tetrimono) {
 
 }
 
-short Grid::getValues(int i, int j){
+blockColor Grid::getValues(int i, int j){
     return area[i][j];
 }
 

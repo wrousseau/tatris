@@ -29,6 +29,7 @@ public slots:
     void update();
     void setTetrimono(Tetrimono* par1Tetrimono);
     void setGrid(Grid* par1Grid);
+    void setBrush(blockColor color, QPainter &p);
 };
 
 #endif // GRIDFRAME_H

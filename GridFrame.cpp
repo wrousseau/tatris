@@ -12,13 +12,41 @@ GridFrame::GridFrame(QWidget *parent) :
     timer->start(1000);
 }
 
+void GridFrame::setBrush(blockColor color, QPainter &p){
+
+    if(color == RED){
+        p.setBrush(QColor(255, 0, 0));
+    }
+    else if(color == GREEN){
+        p.setBrush(QColor(0, 255, 0));
+    }
+    else if(color == BLUE){
+        p.setBrush(QColor(0, 0, 255));
+    }
+    else if(color == YELLOW){
+        p.setBrush(QColor(255, 255, 0));
+    }
+    else if(color == BROWN){
+        p.setBrush(QColor(122, 50, 8));
+    }
+    else if(color == EMPTY){
+        p.setBrush(QColor(0, 0, 0));
+    }
+    else if(color == PURPLE){
+        p.setBrush(QColor(140, 0, 255));
+    }
+    else if(color == ORANGE){
+        p.setBrush(QColor(255, 106, 0));
+    }
+}
+
 void GridFrame::paintEvent(QPaintEvent*)
 {
 
     QPainter p;
     p.begin(this);
-    p.setBrush(Qt::red);
-
+    //p.setBrush(QColor(100, 100, 100));//Qt::red);
+    setBrush(currentTetrimono->getColor(), p);
     for (int i = 0; i < 5; i ++) {
         for (int j = 0; j < 5; j++) {
             if (currentTetrimono->getValues(i, j) != 0) {
@@ -29,7 +57,8 @@ void GridFrame::paintEvent(QPaintEvent*)
     }
     for (int i = grid->getHighest(); i < GRID_HEIGHT; i++) {
         for (int j = 0; j < GRID_WIDTH; j++) {
-            if (grid->getValues(i, j) != 0) {
+            if (grid->getValues(i, j) != EMPTY) {
+                setBrush(grid->getValues(i, j), p);
                 p.drawRect(j*25, i*25, 25, 25);
             }
         }

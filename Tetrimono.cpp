@@ -15,6 +15,7 @@ Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     farthests[2] = 125;
     farthests[3] = 125;
     initializeValues(par1, 0);
+    setColor();
 }
 
 Tetrimono::~Tetrimono() {
@@ -52,6 +53,10 @@ bool Tetrimono::isOnFloor() {
     return onFloor;
 }
 
+blockColor Tetrimono::getColor(){
+    return color;
+}
+
 short Tetrimono::getValues(int i, int j){
     return values[i][j];
 }
@@ -87,6 +92,23 @@ void Tetrimono::setX(int par1) {
 void Tetrimono::setY(int par1) {
 
     coord.x2 = par1;
+}
+
+void Tetrimono::setColor(){
+
+    if(blockType==0){
+        color = YELLOW;
+    }
+    else if(blockType==1){
+        color = BROWN;
+    }
+    else if(blockType==2){
+        color = RED;
+    }
+    else
+        color = RED;
+
+    return;
 }
 
 int Tetrimono::fall(int par1) {

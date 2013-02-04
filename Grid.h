@@ -15,7 +15,7 @@ enum
 class Grid {
 
 private :
-    short area[GRID_HEIGHT][GRID_WIDTH]; // représente la grille des élements fixés
+    blockColor area[GRID_HEIGHT][GRID_WIDTH]; // représente la grille des élements fixés
     int highest;
 
 public:
@@ -26,7 +26,7 @@ public:
     bool isNotOccupied(point par1);
     bool isLineFull(int line);
     void fillGrid(Tetrimono* par1Tetrimono);
-    short getValues(int i, int j);
+    blockColor getValues(int i, int j);
     int getHighest();
     void setHighest(int par1);
     void printArea();

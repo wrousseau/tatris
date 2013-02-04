@@ -23,6 +23,7 @@ class Tetrimono // Représente le symbole en train de tomber
         void rotate();
         bool isOnScreen();
         bool isOnFloor();
+        blockColor getColor();
         int getX();
         int getLeftBound();
         int getRightBound();
@@ -31,6 +32,7 @@ class Tetrimono // Représente le symbole en train de tomber
         int getY();
         void setX(int par1);
         void setY(int par1);
+        void setColor();
         int fall(int par1);
         int moveLeft();
         int moveRight();
