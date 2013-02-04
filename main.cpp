@@ -6,6 +6,7 @@
 #include <QApplication>
 #include <time.h>
 
+Game game;// = new Game();// on la met en globale, la base
 
 int main(int argc, char *argv[])
 {
@@ -13,10 +14,9 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    Game* game = new Game();
-
     int i = rand() % 3;
     Grid* grille = new Grid();
+    game.setGrid(grille);
     Tetrimono nextBlock(i, grille);
 
     GameWindow gameWindow(nextBlock,grille);

@@ -8,6 +8,7 @@
 #include "Structures.h"
 #include "Grid.h"
 #include "Tetrimono.h"
+#include "Game.h"
 
 class GridFrame : public QFrame
 {
@@ -31,5 +32,7 @@ public slots:
     void setGrid(Grid* par1Grid);
     void setBrush(blockColor color, QPainter &p);
 };
+
+extern Game game;
 
 #endif // GRIDFRAME_H

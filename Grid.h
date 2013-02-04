@@ -30,6 +30,7 @@ public:
     int getHighest();
     void setHighest(int par1);
     void printArea();
+    void deleteLine(int i);
 
 };
 
