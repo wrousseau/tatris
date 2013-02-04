@@ -98,7 +98,7 @@ int Tetrimono::fall(int par1) {
         onFloor = true;
         grid->fillGrid(this);
         qDebug() << "heeere";
-        grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[3])/25); // SEG_FAULT
+        grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[3])/25);
         qDebug() << "babouche";
     }
     return 0;

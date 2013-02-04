@@ -15,7 +15,7 @@ enum
 class Grid {
 
 private :
-    short area[GRID_HEIGHT][GRID_WIDTH]; // représente l
+    short area[GRID_HEIGHT][GRID_WIDTH]; // représente la grille des élements fixés
     int highest;
 
 public:

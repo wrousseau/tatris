@@ -70,9 +70,11 @@ void GridFrame::update() {
     if (currentTetrimono->isOnFloor()) {
         qDebug() << "theere";
         int i = rand() % 3;
-        Tetrimono nextBlock(i, grid);
-        setTetrimono(&nextBlock);
-        qDebug() << nextBlock.isOnFloor();
+        delete currentTetrimono; // on désaloue la mémoire  du tétrimono sur le sol
+        currentTetrimono = new Tetrimono(i, grid);// on alloue la mémoire du nouveau en profitant du constructeur
+        //Tetrimono nextBlock(i, grid);
+        //setTetrimono(&nextBlock);
+        //qDebug() << nextBlock.isOnFloor();
     }
     QWidget::update();
 }
