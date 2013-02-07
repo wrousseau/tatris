@@ -99,7 +99,7 @@ void Grid::deleteLine(int i){
         area[i][p] = EMPTY;
     }
 
-    for(int n=i ; n < 0 ; n--){ //On descend tout d'une ligne /!\ Attention origine en haut
+    for(int n=i ; n > 0 ; n--){ //On descend tout ce qui est au dessus d'une ligne /!\ Attention origine en haut
         for(int p=0 ; p < GRID_WIDTH ; p++){
             area[n][p] = area[n-1][p];
         }
