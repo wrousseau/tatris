@@ -74,11 +74,12 @@ bool Tetrimono::isTouchingBlockDown()
 
 bool Tetrimono::isTouchingBlockLeft()
 {
+    qDebug() << "youhou";
     short j, x, y;
-    for(int i = 0; j < 5 ; j++) //on regarde pour chaque ligne de values
+    for(int i = 0; i < 5 ; i++) //on regarde pour chaque ligne de values
     {
-        i = getLineLeftestEl(j);
-        if(i != -1)// si la colonne n'est pas vide
+        j = getLineLeftestEl(i);
+        if(j != -1)// si la colonne n'est pas vide
         {
             y =  (coord.x2)/25 + i;
             x =  (coord.x1)/25 + j;
@@ -94,10 +95,10 @@ bool Tetrimono::isTouchingBlockLeft()
 bool Tetrimono::isTouchingBlockRight()
 {
     short j, x, y;
-    for(int i = 0; j < 5 ; j++) //on regarde pour chaque ligne de values
+    for(int i = 0; i < 5 ; i++) //on regarde pour chaque ligne de values
     {
-        i = getLineRightestEl(j);
-        if(i != -1)// si la colonne n'est pas vide
+        j = getLineRightestEl(i);
+        if(j != -1)// si la colonne n'est pas vide
         {
             y =  (coord.x2)/25 + i;
             x =  (coord.x1)/25 + j;
