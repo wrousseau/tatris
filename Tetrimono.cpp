@@ -53,6 +53,63 @@ bool Tetrimono::isOnFloor() {
     return onFloor;
 }
 
+bool Tetrimono::isTouchingBlockDown()
+{
+    short i, x, y;
+    for(int j = 0; j < 5 ; j++) //on regarde pour chaque colonne de values
+    {
+        i = getColumnLowestEl(j);
+        if(i != -1)// si la colonne n'est pas vide
+        {
+            y =  (coord.x2)/25 + i;
+            x =  (coord.x1)/25 + j;
+
+            if(grid->getValues(y+1, x) != EMPTY)//si ya un truc en dessous
+                return true;
+        }
+
+    }
+    return false;
+}
+
+bool Tetrimono::isTouchingBlockLeft()
+{
+    short j, x, y;
+    for(int i = 0; j < 5 ; j++) //on regarde pour chaque ligne de values
+    {
+        i = getLineLeftestEl(j);
+        if(i != -1)// si la colonne n'est pas vide
+        {
+            y =  (coord.x2)/25 + i;
+            x =  (coord.x1)/25 + j;
+
+            if(grid->getValues(y, x-1) != EMPTY)//si ya un truc à gauche
+                return true;
+        }
+
+    }
+    return false;
+}
+
+bool Tetrimono::isTouchingBlockRight()
+{
+    short j, x, y;
+    for(int i = 0; j < 5 ; j++) //on regarde pour chaque ligne de values
+    {
+        i = getLineRightestEl(j);
+        if(i != -1)// si la colonne n'est pas vide
+        {
+            y =  (coord.x2)/25 + i;
+            x =  (coord.x1)/25 + j;
+
+            if(grid->getValues(y, x+1) != EMPTY)//si ya un truc à droite
+                return true;
+        }
+
+    }
+    return false;
+}
+
 blockColor Tetrimono::getColor(){
     return color;
 }
@@ -85,6 +142,57 @@ int Tetrimono::getY() {
     return coord.x2;
 }
 
+short Tetrimono::getColumnLowestEl(int j)
+{
+    short i=0;
+    bool empty = true;
+    for(int k=0 ; k < 5 ; k++)
+    {
+        if(values[k][j] != 0)
+        {
+            i = k;
+            empty = false;
+        }
+    }
+    if(empty)
+        i = -1;
+    return i; // si -1 -> pas d'élément sur la colonne par construction de values
+}
+
+short Tetrimono::getLineLeftestEl(int i)
+{
+    short j=0;
+    bool empty = true;
+    for(int k=4 ; k >= 0 ; k--)
+    {
+        if(values[i][k] != 0)
+        {
+            j = k;
+            empty = false;
+        }
+    }
+    if(empty)
+        j = -1;
+    return j; // si -1 -> pas d'élément sur la colonne par construction de values
+}
+
+short Tetrimono::getLineRightestEl(int i)
+{
+    short j=0;
+    bool empty = true;
+    for(int k=0 ; k < 5 ; k++)
+    {
+        if(values[i][k] != 0)
+        {
+            j = k;
+            empty = false;
+        }
+    }
+    if(empty)
+        j = -1;
+    return j; // si -1 -> pas d'élément sur la colonne par construction de values
+}
+
 void Tetrimono::setX(int par1) {
     coord.x1 = par1;
 }
@@ -112,7 +220,7 @@ void Tetrimono::setColor(){
 }
 
 int Tetrimono::fall(int par1) {
-    if (grid->isInBounds(getLeftBound(),getLowerBound()+par1)) {
+    if (grid->isInBounds(getLeftBound(),getLowerBound()+par1) && !isTouchingBlockDown()) {
         coord.x2 += par1;
         return 1;
     }
@@ -127,7 +235,7 @@ int Tetrimono::fall(int par1) {
 }
 
 int Tetrimono::moveLeft() {
-    if (grid->isInBounds(getLeftBound()-25,coord.x2) && !onFloor) {
+    if (grid->isInBounds(getLeftBound()-25,coord.x2) && !onFloor && !isTouchingBlockLeft()) {
     coord.x1 -= 25;
     return 1;
     }
@@ -135,7 +243,7 @@ int Tetrimono::moveLeft() {
 }
 
 int Tetrimono::moveRight() {
-    if (grid->isInBounds(getRightBound()+25,coord.x2) && !onFloor){
+    if (grid->isInBounds(getRightBound()+25,coord.x2) && !onFloor && !isTouchingBlockRight()){
     coord.x1 += 25;
     return 1;
     }
