@@ -43,6 +43,33 @@ void Tetrimono::initializeValues(int par1, int par2) {
 void Tetrimono::rotate() {
     rotation = (rotation + 1) % 4;
     initializeValues(blockType, rotation);
+    int tmp;
+
+    if(tmp = getLeftBound() < 0)// si on arrive trop à gauche on décale à droite
+        coord.x1 += tmp;
+    else if(tmp = getRightBound() > (GRID_WIDTH - 1)*25) //si on arrive trop à droite on décale à gauche
+        coord.x1 -= (tmp - (GRID_WIDTH - 1)*25);
+    else if(tmp = getLowerBound() > (GRID_HEIGHT - 1)*25) //si on arrive trop en bas ...
+        coord.x2 -= (tmp - (GRID_HEIGHT - 1)*25);
+
+    //Vérification : la rotation amène-t-elle le tetrimono au dessus d'un block déjà posé ?
+    bool merging = false;
+
+    for(int i = 0 ; i < 5 ; i++)
+    {
+        for(int j = 0 ; j < 5 ; j++)
+        {
+            if(values[i][j] != 0 && grid->getValues(i+coord.x2, j+coord.x2) != EMPTY)//Si une case du tetrimono chevauche avec un block non vide de la grille
+                merging = true;
+        }
+    }
+    if(merging)//s'il y a chevauchement on annule la rotation
+    {
+        rotation -= 1;
+        rotation %= 4;
+        initializeValues(blockType, rotation);
+    }
+    return;
 }
 
 bool Tetrimono::isOnScreen() {
