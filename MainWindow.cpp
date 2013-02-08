@@ -5,7 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    int i = rand() % 4;
+    int i = rand() % 7;
     Grid* grille = new Grid();
     game.setGrid(grille);
     Tetrimono* nextBlock = new Tetrimono(i, grille);
