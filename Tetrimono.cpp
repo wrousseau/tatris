@@ -248,6 +248,15 @@ void Tetrimono::setColor(){
     else if(blockType==3){
         color = GREEN;
     }
+    else if(blockType==4){
+        color = ORANGE;
+    }
+    else if(blockType==5){
+        color = PURPLE;
+    }
+    else if(blockType==6){
+        color = BLUE;
+    }
     else
         color = RED;
 

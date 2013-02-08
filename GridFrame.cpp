@@ -98,7 +98,7 @@ void GridFrame::update() {
     repaint();
     if (currentTetrimono->isOnFloor()) {
         game.scoreManage();
-        int i = rand() % 4;
+        int i = rand() % 7;
         delete currentTetrimono; // on désaloue la mémoire  du tétrimono sur le sol
         currentTetrimono = new Tetrimono(i, grid);// on alloue la mémoire du nouveau en profitant du constructeur
     }
