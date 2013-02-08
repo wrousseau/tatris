@@ -1,5 +1,4 @@
 #include "GridFrame.h"
-#include "QDebug"
 
 GridFrame::GridFrame(QWidget *parent) :
     QFrame(parent)
@@ -98,7 +97,6 @@ void GridFrame::update() {
     currentTetrimono->fall(25);
     repaint();
     if (currentTetrimono->isOnFloor()) {
-        qDebug() << "theere";
         game.scoreManage();
         int i = rand() % 4;
         delete currentTetrimono; // on désaloue la mémoire  du tétrimono sur le sol
