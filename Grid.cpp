@@ -7,7 +7,7 @@ Grid::Grid() {
     highest = GRID_HEIGHT - 1;
     for (int i = 0; i < GRID_HEIGHT; i++) {
         for (int j = 0; j < GRID_WIDTH; j++) {
-            area[i][j] = 0;
+            area[i][j] = EMPTY;
         }
     }
 }
@@ -42,13 +42,13 @@ bool Grid::isNotOccupied(point par1) {
 
 bool Grid::isLineFull(int line){
     bool test = true;
-    int i=0;
+    int j=0;
 
-    while(test)
+    while(test && j < GRID_WIDTH)
     {
-        if(area[i][line] == EMPTY)
+        if(area[line][j] == EMPTY)
             test = false;
-        i++;
+        j++;
     }
     return test;
 }
@@ -56,17 +56,23 @@ bool Grid::isLineFull(int line){
 void Grid::fillGrid(Tetrimono* par1Tetrimono) {
     for (int i = 0; i < 5; i ++) {
         for (int j = 0; j < 5; j ++) {
+            //std::cout << par1Tetrimono->getValues(i,j) << " ";
             if (par1Tetrimono->getValues(i,j) != 0) {
-            //area[par1Tetrimono->getX()/25+i][par1Tetrimono->getY()/25+j]=par1Tetrimono->getValues(i, j);
-            qDebug() << "whhat";
+                qDebug() << par1Tetrimono->getY()/25+i;
+                qDebug() << par1Tetrimono->getX()/25+j;
+                qDebug() << par1Tetrimono->getValues(i, j);
+                std::cout << std::endl;
+                area[par1Tetrimono->getY()/25+i][par1Tetrimono->getX()/25+j]=par1Tetrimono->getColor();//par1Tetrimono->getValues(i, j);
+
             }
 
         }
+        //std::cout << std::endl;
     }
 
 }
 
-short Grid::getValues(int i, int j){
+blockColor Grid::getValues(int i, int j){
     return area[i][j];
 }
 
@@ -85,6 +91,24 @@ void Grid::printArea() {
         }
         std::cout << "\n";
     }
+}
+
+void Grid::deleteLine(int i){
+
+    for(int p=0 ; p < GRID_WIDTH ; p++){//on met la ligne à EMPTY -> pas forcément utile, à vérifier
+        area[i][p] = EMPTY;
+    }
+
+    for(int n=i ; n > 0 ; n--){ //On descend tout ce qui est au dessus d'une ligne /!\ Attention origine en haut
+        for(int p=0 ; p < GRID_WIDTH ; p++){
+            area[n][p] = area[n-1][p];
+        }
+    }
+
+    for(int p=0 ; p < GRID_WIDTH ; p++){ // on remet la ligne tout en haut à empty
+        area[0][p] = EMPTY;
+    }
+return;
 }
 
 Grid::~Grid() {

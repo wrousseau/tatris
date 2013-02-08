@@ -38,3 +38,52 @@ int Game::gameOver() {
 bool Game::isGameOn() {
     return gameOn;
 }
+
+void Game::setGrid(Grid* parGrid){
+    grid = parGrid;
+}
+
+void Game::scoreManage(){
+
+    int bonus = 0;
+    int tab[4]={0};
+
+    for(int i=0; i < GRID_HEIGHT ; i++){ //on met dans bonus le nombres de lignes complètes, et on stocke les lignes dans tab
+
+        if(grid->isLineFull(i))
+        {
+            tab[bonus] = i;
+            bonus++;
+        }
+    }
+
+    if(bonus == 0)
+        return;
+    else if(bonus == 1){// on supprime depuis le haut donc pas besoin de s'inquiéter d'un décalage
+        score+=40;
+        grid->deleteLine(tab[0]);
+    }
+    else if(bonus == 2)
+    {
+        score+=100;
+        grid->deleteLine(tab[0]);
+        grid->deleteLine(tab[1]);
+    }
+    else if(bonus == 3)
+    {
+        score+=300;
+        grid->deleteLine(tab[0]);
+        grid->deleteLine(tab[1]);
+        grid->deleteLine(tab[2]);
+    }
+    else if(bonus == 4)
+    {
+        score+=1200;
+        grid->deleteLine(tab[0]);
+        grid->deleteLine(tab[1]);
+        grid->deleteLine(tab[2]);
+        grid->deleteLine(tab[3]);
+    }
+
+    return;
+}
