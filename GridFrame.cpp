@@ -15,16 +15,16 @@ GridFrame::GridFrame(QWidget *parent) :
 void GridFrame::setBrush(blockColor color, QPainter &p){
 
     if(color == RED){
-        p.setBrush(QColor(255, 0, 0));
+        p.setBrush(Qt::red);
     }
     else if(color == GREEN){
-        p.setBrush(QColor(0, 255, 0));
+        p.setBrush(Qt::green);
     }
     else if(color == BLUE){
-        p.setBrush(QColor(0, 0, 255));
+        p.setBrush(Qt::blue);
     }
     else if(color == YELLOW){
-        p.setBrush(QColor(255, 255, 0));
+        p.setBrush(Qt::yellow);
     }
     else if(color == BROWN){
         p.setBrush(QColor(122, 50, 8));
