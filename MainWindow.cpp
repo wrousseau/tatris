@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent) :
     game.setGrid(grille);
     Tetrimono* nextBlock = new Tetrimono(i, grille);
     ui->setupUi(this);
+
+    Phonon::MediaObject *music =
+        Phonon::createPlayer(Phonon::MusicCategory,
+                             Phonon::MediaSource("/Users/wrousseau/Downloads/salsa.mp3"));
+    music->play();
+
     sendGridToGridFrame(grille);
     sendTetrimonoToGridFrame(nextBlock);
 

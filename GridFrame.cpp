@@ -100,7 +100,7 @@ void GridFrame::update() {
     if (currentTetrimono->isOnFloor()) {
         qDebug() << "theere";
         game.scoreManage();
-        int i = rand() % 3;
+        int i = rand() % 4;
         delete currentTetrimono; // on désaloue la mémoire  du tétrimono sur le sol
         currentTetrimono = new Tetrimono(i, grid);// on alloue la mémoire du nouveau en profitant du constructeur
     }

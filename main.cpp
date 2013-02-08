@@ -4,6 +4,7 @@
 #include "Grid.h"
 #include "Tetrimono.h"
 #include <QApplication>
+#include <QtWidgets>
 #include <time.h>
 
 Game game;// = new Game();// on la met en globale, la base

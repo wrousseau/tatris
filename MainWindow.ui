@@ -77,7 +77,7 @@
      <enum>QFrame::Raised</enum>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>269</x>
@@ -173,7 +173,7 @@ background-color: black;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="EscButton">
+      <widget class="QPushButton" name="ExitButton">
        <property name="styleSheet">
         <string notr="true"/>
        </property>
