@@ -73,7 +73,6 @@ bool Tetrimono::isTouchingBlockDown()
 
 bool Tetrimono::isTouchingBlockLeft()
 {
-    qDebug() << "youhou";
     short j, x, y;
     for(int i = 0; i < 5 ; i++) //on regarde pour chaque ligne de values
     {
@@ -123,19 +122,53 @@ int Tetrimono::getX() {
 }
 
 int Tetrimono::getLeftBound() {
-    return coord.x1 + farthests[0];
+
+    short tmp = 4;
+    for(int i=0 ; i < 5 ; i++) // on récupère la position de l'élément le plus à gauche
+    {
+        short j = getLineLeftestEl(i);
+
+        if(j >= 0 && j < tmp)
+            tmp = j;
+    }
+    return (coord.x1 + tmp*25);
+
 }
 
 int Tetrimono::getRightBound() {
-    return coord.x1 + 125 - farthests[1];
+
+    short tmp = 0;
+    for(int i=0 ; i < 5 ; i++) //cf getLeftBound()
+    {
+        short j = getLineRightestEl(i);
+        if(j >= 0 && j > tmp)
+            tmp = j;
+    }
+    return (coord.x1 + tmp*25);
+
 }
 
 int Tetrimono::getUpperBound() {
-    return coord.x2 + farthests[2];
+    short tmp = 0;
+    for(int j=0 ; j < 5 ; j++)
+    {
+        short i = getColumnLowestEl(j);
+        if(i >= 0 && i < tmp)
+            tmp = i;
+    }
+    return (coord.x2 +tmp*25);
 }
 
 int Tetrimono::getLowerBound() {
-    return coord.x2 + 125 - farthests[3];
+
+    short tmp = 0;
+    for(int j=0 ; j < 5 ; j++)
+    {
+        short i = getColumnLowestEl(j);
+        if(i >= 0 && i > tmp)
+            tmp = i;
+    }
+    return (coord.x2 +tmp*25); //le rajout des 25 se fait dans fall()
 }
 
 int Tetrimono::getY() {
@@ -223,6 +256,7 @@ void Tetrimono::setColor(){
 }
 
 int Tetrimono::fall(int par1) {
+    qDebug() << grid->isInBounds(getLeftBound() ,getLowerBound()+par1);
     if (grid->isInBounds(getLeftBound(),getLowerBound()+par1) && !isTouchingBlockDown()) {
         coord.x2 += par1;
         return 1;
@@ -230,25 +264,25 @@ int Tetrimono::fall(int par1) {
     if (!onFloor) {
         onFloor = true;
         grid->fillGrid(this);
-        qDebug() << "heeere";
-        grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[2])/25); // SEG_FAULT
-        qDebug() << "babouche";
+        grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[2])/25);
     }
     return 0;
 }
 
 int Tetrimono::moveLeft() {
-    if (grid->isInBounds(getLeftBound()-25,coord.x2) && !onFloor && !isTouchingBlockLeft()) {
-    coord.x1 -= 25;
-    return 1;
+
+    if (grid->isInBounds(getLeftBound()-25, coord.x2) && !onFloor && !isTouchingBlockLeft()) {
+        coord.x1 -= 25;
+        return 1;
     }
     return 0;
 }
 
 int Tetrimono::moveRight() {
-    if (grid->isInBounds(getRightBound()+25,coord.x2) && !onFloor && !isTouchingBlockRight()){
-    coord.x1 += 25;
-    return 1;
+
+    if (grid->isInBounds(getRightBound()+25, coord.x2) && !onFloor && !isTouchingBlockRight()){
+        coord.x1 += 25;
+        return 1;
     }
     return 0;
 }
