@@ -22,7 +22,6 @@ Tetrimono::~Tetrimono() {
 }
 
 void Tetrimono::initializeValues(int par1, int par2) {
-    int count = 0;
     for(int i=0; i<5; i++){
         for(int j=0; j<5 ; j++){
             values[i][j]=valuesEnumeration[par1][par2][i][j]; //cf Structures.h
@@ -209,10 +208,13 @@ void Tetrimono::setColor(){
         color = YELLOW;
     }
     else if(blockType==1){
-        color = BROWN;
+        color = CYAN;
     }
     else if(blockType==2){
         color = RED;
+    }
+    else if(blockType==3){
+        color = GREEN;
     }
     else
         color = RED;

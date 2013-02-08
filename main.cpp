@@ -1,5 +1,5 @@
 
-#include "GameWindow.h"
+#include "MainWindow.h"
 #include "Game.h"
 #include "Grid.h"
 #include "Tetrimono.h"
@@ -13,19 +13,10 @@ int main(int argc, char *argv[])
     srand ( time(NULL) );
 
     QApplication app(argc, argv);
+    app.setApplicationName("TAtris");
 
-    int i = rand() % 3;
-    Grid* grille = new Grid();
-    game.setGrid(grille);
-    Tetrimono nextBlock(i, grille);
-
-    GameWindow gameWindow(nextBlock,grille);
-
+    MainWindow gameWindow;
     gameWindow.show();
-
-
-
-
 
     exit(app.exec());
 }

@@ -26,6 +26,9 @@ void GridFrame::setBrush(blockColor color, QPainter &p){
     else if(color == YELLOW){
         p.setBrush(Qt::yellow);
     }
+    else if(color == CYAN){
+        p.setBrush(QColor(0,255,255));
+    }
     else if(color == BROWN){
         p.setBrush(QColor(122, 50, 8));
     }
@@ -45,7 +48,6 @@ void GridFrame::paintEvent(QPaintEvent*)
 
     QPainter p;
     p.begin(this);
-    //p.setBrush(QColor(100, 100, 100));//Qt::red);
     setBrush(currentTetrimono->getColor(), p);
     for (int i = 0; i < 5; i ++) {
         for (int j = 0; j < 5; j++) {
@@ -101,9 +103,6 @@ void GridFrame::update() {
         int i = rand() % 3;
         delete currentTetrimono; // on désaloue la mémoire  du tétrimono sur le sol
         currentTetrimono = new Tetrimono(i, grid);// on alloue la mémoire du nouveau en profitant du constructeur
-        //Tetrimono nextBlock(i, grid);
-        //setTetrimono(&nextBlock);
-        //qDebug() << nextBlock.isOnFloor();
     }
     QWidget::update();
 }

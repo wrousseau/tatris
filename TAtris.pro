@@ -15,29 +15,23 @@ CONFIG += console
 
 
 SOURCES += main.cpp \
-    GameWindow.cpp \
     GridFrame.cpp \
     Grid.cpp \
     Tetrimono.cpp \
     Game.cpp \
-    testwidget.cpp
+    MainWindow.cpp
 
 HEADERS  += \
     Tetrimono.h \
     Structures.h \
     Game.h \
-    GameWindow.h \
     GridFrame.h \
     Grid.h \
-    testwidget.h
+    MainWindow.h
 
 FORMS    += \
-    GameWindow.ui \
-    testwidget.ui
+    MainWindow.ui
 
-OTHER_FILES += \
-    ../../../../Downloads/high-quality-space-backgrounds.jpg \
-    ../../../../Downloads/galaxy.jpg
 
 RESOURCES += \
     Ressources.qrc

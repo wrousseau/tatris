@@ -2,5 +2,9 @@
     <qresource prefix="/ressources">
         <file>ressources/high-quality-space-backgrounds.jpg</file>
         <file>ressources/galaxy.jpg</file>
+        <file>ressources/logo.png</file>
+        <file>ressources/icone.png</file>
+        <file>ressources/grid.png</file>
+        <file>ressources/background.png</file>
     </qresource>
 </RCC>
