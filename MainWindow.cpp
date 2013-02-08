@@ -11,10 +11,17 @@ MainWindow::MainWindow(QWidget *parent) :
     Tetrimono* nextBlock = new Tetrimono(i, grille);
     ui->setupUi(this);
 
-    Phonon::MediaObject *music =
-        Phonon::createPlayer(Phonon::MusicCategory,
-                             Phonon::MediaSource("/Users/wrousseau/Downloads/salsa.mp3"));
-    music->play();
+    QMediaPlayer* player = new QMediaPlayer;
+     QFile::copy (":/salsa.mp3", "salsa.mp3");
+    QUrl url("salsa.mp3");
+
+    QMediaPlaylist * playlist = new QMediaPlaylist();
+    playlist->addMedia(url);
+    playlist->setPlaybackMode( QMediaPlaylist::Loop );
+    player->setPlaylist( playlist );
+    playlist->setCurrentIndex(0);
+    player->setVolume(50);
+    player->play();
 
     sendGridToGridFrame(grille);
     sendTetrimonoToGridFrame(nextBlock);

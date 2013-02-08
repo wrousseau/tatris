@@ -35,7 +35,6 @@ FORMS    += \
 RESOURCES += \
     Ressources.qrc
 
-QT += widgets
-QT += phonon
+QT += multimedia widgets
 
 

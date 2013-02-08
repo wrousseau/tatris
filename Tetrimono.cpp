@@ -1,5 +1,4 @@
 #include "Tetrimono.h"
-#include "QDebug"
 #include "Grid.h"
 
 
@@ -292,7 +291,6 @@ void Tetrimono::setColor(){
 }
 
 int Tetrimono::fall(int par1) {
-    qDebug() << grid->isInBounds(getLeftBound() ,getLowerBound()+par1);
     if (grid->isInBounds(getLeftBound(),getLowerBound()+par1) && !isTouchingBlockDown()) {
         coord.x2 += par1;
         return 1;

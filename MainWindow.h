@@ -5,7 +5,8 @@
 #include <QtCore>
 #include <QtGui>
 #include <QGraphicsView>
-#include <QtMultimedia>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 
 class Tetrimono;

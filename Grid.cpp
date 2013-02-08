@@ -1,6 +1,5 @@
 #include "Grid.h"
 #include "Tetrimono.h"
-#include "QDebug"
 #include <iostream>
 
 Grid::Grid() {
@@ -57,10 +56,6 @@ void Grid::fillGrid(Tetrimono* par1Tetrimono) {
     for (int i = 0; i < 5; i ++) {
         for (int j = 0; j < 5; j ++) {
             if (par1Tetrimono->getValues(i,j) != 0) {
-                qDebug() << par1Tetrimono->getY()/25+i;
-                qDebug() << par1Tetrimono->getX()/25+j;
-                qDebug() << par1Tetrimono->getValues(i, j);
-                std::cout << std::endl;
                 area[par1Tetrimono->getY()/25+i][par1Tetrimono->getX()/25+j]=par1Tetrimono->getColor();//par1Tetrimono->getValues(i, j);
 
             }
