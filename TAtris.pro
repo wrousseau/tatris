@@ -6,7 +6,6 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = TAtris2
 TEMPLATE = app
@@ -35,3 +34,8 @@ FORMS    += \
 
 RESOURCES += \
     Ressources.qrc
+
+QT += widgets
+QT += phonon
+
+

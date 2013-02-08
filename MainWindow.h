@@ -5,6 +5,9 @@
 #include <QtCore>
 #include <QtGui>
 #include <QGraphicsView>
+#include <QtMultimedia>
+
+
 class Tetrimono;
 class Grid;
 
