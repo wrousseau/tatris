@@ -285,10 +285,10 @@ void Tetrimono::setColor(){
         color = GREEN;
     }
     else if(blockType==4){
-        color = ORANGE;
+        color = PURPLE;
     }
     else if(blockType==5){
-        color = PURPLE;
+        color = ORANGE;
     }
     else if(blockType==6){
         color = BLUE;

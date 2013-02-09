@@ -28,6 +28,7 @@ private:
     Ui::MainWindow *ui;
     void sendTetrimonoToGridFrame(Tetrimono* par1Tetrimono);
     void sendGridToGridFrame(Grid* par1Grid);
+    QMediaPlayer* player;
 
 
 private slots:

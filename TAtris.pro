@@ -8,6 +8,7 @@ QT       += core gui
 
 
 TARGET = TAtris2
+
 TEMPLATE = app
 
 CONFIG += console
@@ -35,6 +36,13 @@ FORMS    += \
 RESOURCES += \
     Ressources.qrc
 
+macx {
+ MediaFiles.files = ressources/salsa.mp3
+    MediaFiles.path = Contents/MacOS
+    QMAKE_BUNDLE_DATA += MediaFiles
+}
+
 QT += multimedia widgets
+
 
 

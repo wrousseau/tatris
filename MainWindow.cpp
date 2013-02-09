@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "QDebug"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,15 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     Tetrimono* nextBlock = new Tetrimono(i, grille);
     ui->setupUi(this);
 
-    QMediaPlayer* player = new QMediaPlayer;
-     QFile::copy (":/salsa.mp3", "salsa.mp3");
-    QUrl url("salsa.mp3");
-
-    QMediaPlaylist * playlist = new QMediaPlaylist();
-    playlist->addMedia(url);
-    playlist->setPlaybackMode( QMediaPlaylist::Loop );
-    player->setPlaylist( playlist );
-    playlist->setCurrentIndex(0);
+    player = new QMediaPlayer;
+    qDebug() << QDir::current().path() +  QString("salsa.mp3");
+    player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
     player->setVolume(50);
     player->play();
 
