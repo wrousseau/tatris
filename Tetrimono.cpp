@@ -1,5 +1,6 @@
 #include "Tetrimono.h"
 #include "Grid.h"
+#include <iostream>
 
 
 Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
@@ -42,6 +43,41 @@ void Tetrimono::initializeValues(int par1, int par2) {
 void Tetrimono::rotate() {
     rotation = (rotation + 1) % 4;
     initializeValues(blockType, rotation);
+    /*int tmp;
+
+    tmp = getLeftBound();
+    if(tmp < 0)// si on arrive trop à gauche on décale à droite
+        coord.x1 += tmp;
+
+    tmp = getRightBound();
+    if(tmp > (GRID_WIDTH - 1)*25) //si on arrive trop à droite on décale à gauche
+        coord.x1 -= (tmp - (GRID_WIDTH - 1)*25);
+
+    tmp = getLowerBound();
+    if(tmp > (GRID_HEIGHT - 1)*25) //si on arrive trop en bas ...
+        coord.x2 -= (tmp - (GRID_HEIGHT - 1)*25);
+
+    //Vérification : la rotation amène-t-elle le tetrimono au dessus d'un block déjà posé ?
+    bool merging = false;
+
+    for(int i = 0 ; i < 5 ; i++)
+    {
+        for(int j = 0 ; j < 5 ; j++)
+        {
+            if((values[i][j] != 0) && (grid->getValues(i+(coord.x2/25), j+(coord.x1/25)) != EMPTY))//Si une case du tetrimono chevauche avec un block non vide de la grille
+                merging = true;
+            std::cout << grid->getValues(i+(coord.x2/25), j+(coord.x1/25)) << " ";
+        }
+        std::cout << std::endl;
+    }
+    if(merging)//s'il y a chevauchement on annule la rotation
+    {
+        //std::cout << "plop   ";
+        rotation -= 1;
+        rotation %= 4;
+        initializeValues(blockType, rotation);
+    }*/
+    return;
 }
 
 bool Tetrimono::isOnScreen() {
