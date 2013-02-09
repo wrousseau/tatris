@@ -4,12 +4,14 @@ GridFrame::GridFrame(QWidget *parent) :
     QFrame(parent)
 {
     this->setFocusPolicy(Qt::StrongFocus);
+    isPlaying = true;
 
 
-    QTimer *timer = new QTimer(this);
+    timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     timer->start(1000);
 }
+
 
 void GridFrame::setBrush(blockColor color, QPainter &p){
 
@@ -86,6 +88,12 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
                 currentTetrimono->fall(25);
                 repaint();
                 break;
+            case Qt::Key_P:
+                pause();
+                break;
+            case Qt::Key_Escape:
+                exit(0);
+                break;
             case Qt::Key_Space:
                 currentTetrimono->rotate();
                 repaint();
@@ -97,7 +105,7 @@ void GridFrame::update() {
     currentTetrimono->fall(25);
     repaint();
     if (currentTetrimono->isOnFloor()) {
-        game.scoreManage();
+        currentGame->scoreManage();
         int i = rand() % 7;
         delete currentTetrimono; // on désaloue la mémoire  du tétrimono sur le sol
         currentTetrimono = new Tetrimono(i, grid);// on alloue la mémoire du nouveau en profitant du constructeur
@@ -111,4 +119,20 @@ void GridFrame::setTetrimono(Tetrimono* par1Tetrimono) {
 
 void GridFrame::setGrid(Grid* par1Grid) {
     grid = par1Grid;
+}
+
+void GridFrame::setGame(Game *par1Game)
+{
+    currentGame = par1Game;
+}
+
+void GridFrame::pause() {
+    if (isPlaying) {
+        timer->stop();
+    }
+    else {
+        timer->start(1000);
+    }
+    update();
+    isPlaying = !isPlaying;
 }

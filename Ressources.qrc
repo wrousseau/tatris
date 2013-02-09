@@ -6,6 +6,5 @@
         <file>ressources/icone.png</file>
         <file>ressources/grid.png</file>
         <file>ressources/background.png</file>
-        <file alias="salsa.mp3">ressources/salsa.mp3</file>
     </qresource>
 </RCC>

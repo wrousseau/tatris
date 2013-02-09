@@ -1,9 +1,11 @@
 #include "Game.h"
 
-Game::Game() {
+Game::Game(Grid* par1Grid) {
+    grid = par1Grid;
     gameOn = true;
-    level = 1;
+    level = 0;
     score = 0;
+    deletedLines = 0;
 }
 
 Game::~Game() {}
@@ -22,11 +24,11 @@ void Game::levelUp(){
     level++;
 }
 
-unsigned long int Game::getScore() {
+int Game::getScore() {
     return score;
 }
 
-void Game::addToScore(unsigned long int par1) {
+void Game::addToScore(int par1) {
     score += par1;
 }
 
@@ -57,33 +59,53 @@ void Game::scoreManage(){
         }
     }
 
+
+
     if(bonus == 0)
+    {
         return;
+    }
     else if(bonus == 1){// on supprime depuis le haut donc pas besoin de s'inquiéter d'un décalage
-        score+=40;
+        score+=40*(level+1);
         grid->deleteLine(tab[0]);
+        deletedLines++;
     }
     else if(bonus == 2)
     {
-        score+=100;
+        score+=100*(level+1);
         grid->deleteLine(tab[0]);
         grid->deleteLine(tab[1]);
+        deletedLines+=2;
     }
     else if(bonus == 3)
     {
-        score+=300;
+        score+=300*(level+1);
         grid->deleteLine(tab[0]);
         grid->deleteLine(tab[1]);
         grid->deleteLine(tab[2]);
+        deletedLines+=3;
     }
     else if(bonus == 4)
     {
-        score+=1200;
+        score+=1200*(level+1);
         grid->deleteLine(tab[0]);
         grid->deleteLine(tab[1]);
         grid->deleteLine(tab[2]);
         grid->deleteLine(tab[3]);
+        deletedLines+=4;
     }
 
+    emit updateScore(score);
+    checkScore();
     return;
+}
+
+void Game::checkScore() {
+        if (deletedLines >= 10*(level+1))
+        {
+            level++;
+            QString str = "Niveau " + QString::number(level);
+            emit updateLevel(str);
+        }
+
 }

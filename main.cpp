@@ -1,23 +1,18 @@
-
 #include "MainWindow.h"
-#include "Game.h"
-#include "Grid.h"
-#include "Tetrimono.h"
 #include <QApplication>
-#include <QtWidgets>
 #include <time.h>
 
-Game game;// = new Game();// on la met en globale, la base
 
 int main(int argc, char *argv[])
 {
-    srand ( time(NULL) );
+    srand ( time(NULL) ); // Initialisation de la Fonction Random
+
 
     QApplication app(argc, argv);
     app.setApplicationName("TAtris");
 
-    MainWindow gameWindow;
+    MainWindow gameWindow; // Initialisation de la fenêtre principale
     gameWindow.show();
 
-    exit(app.exec());
+    exit(app.exec()); // Sortie de l'Application
 }

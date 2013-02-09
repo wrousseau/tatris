@@ -149,7 +149,7 @@ background-color: black;</string>
         </font>
        </property>
        <property name="text">
-        <string>Niveau 1</string>
+        <string>Niveau 0</string>
        </property>
       </widget>
      </item>

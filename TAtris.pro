@@ -36,11 +36,10 @@ FORMS    += \
 RESOURCES += \
     Ressources.qrc
 
-macx {
- MediaFiles.files = ressources/salsa.mp3
-    MediaFiles.path = Contents/MacOS
-    QMAKE_BUNDLE_DATA += MediaFiles
-}
+myFiles.sources = ressources*.mp3
+DEPLOYMENT += myFiles
+
+
 
 QT += multimedia widgets
 

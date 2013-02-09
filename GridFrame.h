@@ -18,11 +18,15 @@ private:
     point coord;
     Tetrimono *currentTetrimono;
     Grid *grid;
+    bool isPlaying;
+    QTimer *timer;
+    Game *currentGame;
 
 public:
     explicit GridFrame(QWidget *parent = 0);
     
 signals:
+
     
 public slots:
     void paintEvent(QPaintEvent*);
@@ -30,7 +34,10 @@ public slots:
     void update();
     void setTetrimono(Tetrimono* par1Tetrimono);
     void setGrid(Grid* par1Grid);
+    void setGame(Game* par1Game);
+
     void setBrush(blockColor color, QPainter &p);
+    void pause();
 };
 
 extern Game game;

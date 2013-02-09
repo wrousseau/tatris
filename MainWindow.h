@@ -7,6 +7,7 @@
 #include <QGraphicsView>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
+#include "Game.h"
 
 
 class Tetrimono;
@@ -23,13 +24,15 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void sendTetrimonoToGridFrame(Tetrimono* par1Tetrimono);
+    void sendGridToGridFrame(Grid* par1Grid);
+    void sendGameToGridFrame(Game* par1Game);
     
 private:
     Ui::MainWindow *ui;
-    void sendTetrimonoToGridFrame(Tetrimono* par1Tetrimono);
-    void sendGridToGridFrame(Grid* par1Grid);
+    Game* currentGame;
+    Grid* grid;
     QMediaPlayer* player;
-
 
 private slots:
     void on_ExitButton_clicked();
