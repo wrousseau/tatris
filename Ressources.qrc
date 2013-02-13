@@ -6,5 +6,6 @@
         <file>ressources/icone.png</file>
         <file>ressources/grid.png</file>
         <file>ressources/background.png</file>
+        <file>ressources/tetrimonos.png</file>
     </qresource>
 </RCC>

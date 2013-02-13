@@ -12,6 +12,11 @@ GridFrame::GridFrame(QWidget *parent) :
     timer->start(1000);
 }
 
+void GridFrame::setNextTetrimonoNumber(int par1)
+{
+    nextTetrimonoNumber = par1;
+}
+
 
 void GridFrame::setBrush(blockColor color, QPainter &p){
 
@@ -106,9 +111,11 @@ void GridFrame::update() {
     repaint();
     if (currentTetrimono->isOnFloor()) {
         currentGame->scoreManage();
-        int i = rand() % 7;
         delete currentTetrimono; // on désaloue la mémoire  du tétrimono sur le sol
-        currentTetrimono = new Tetrimono(i, grid);// on alloue la mémoire du nouveau en profitant du constructeur
+        currentTetrimono = new Tetrimono(nextTetrimonoNumber, grid);
+        int i = rand() % 7;
+        nextTetrimonoNumber = i;
+        emit updateNextBlock(i);
     }
     QWidget::update();
 }
@@ -135,4 +142,9 @@ void GridFrame::pause() {
     }
     update();
     isPlaying = !isPlaying;
+}
+
+void GridFrame::setTimer(int par1)
+{
+    timer->setInterval(par1);
 }

@@ -101,7 +101,7 @@ void Game::scoreManage(){
 }
 
 void Game::checkScore() {
-        if (deletedLines >= 10*(level+1))
+        if (deletedLines >= 1*(level+1))
         {
             level++;
             QString str = "Niveau " + QString::number(level);

@@ -8,6 +8,7 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include "Game.h"
+#include "GridFrame.h"
 
 
 class Tetrimono;
@@ -24,15 +25,23 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void sendTetrimonoToGridFrame(Tetrimono* par1Tetrimono);
+    void sendTetrimonoToGridFrame(Tetrimono* par1Tetrimono, int par1);
     void sendGridToGridFrame(Grid* par1Grid);
     void sendGameToGridFrame(Game* par1Game);
+    void loadTetrimonosImages();
+    int getNextTetrimonoNumber();
+
+public slots:
+    void setNextTetrimonoNumber(int par1);
+    void updateLevel(QString par1String);
     
 private:
     Ui::MainWindow *ui;
     Game* currentGame;
     Grid* grid;
     QMediaPlayer* player;
+    QImage tetrimonoImages[7];
+    int nextTetrimonoNumber;
 
 private slots:
     void on_ExitButton_clicked();
