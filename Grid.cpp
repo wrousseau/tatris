@@ -1,6 +1,5 @@
 #include "Grid.h"
 #include "Tetrimono.h"
-#include <iostream>
 
 Grid::Grid() {
     highest = GRID_HEIGHT - 1;
@@ -65,6 +64,7 @@ void Grid::fillGrid(Tetrimono* par1Tetrimono) {
 
 }
 
+
 blockColor Grid::getValues(int i, int j){
     return area[i][j];
 }
@@ -77,14 +77,6 @@ void Grid::setHighest(int par1) {
     highest = par1;
 }
 
-void Grid::printArea() {
-    for (int i = 0; i < GRID_HEIGHT; i++) {
-        for (int j = 0; j < GRID_WIDTH; j++) {
-            std::cout << area[i][j] << " ";
-        }
-        std::cout << "\n";
-    }
-}
 
 void Grid::deleteLine(int i){
 

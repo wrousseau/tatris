@@ -1,6 +1,5 @@
 #include "Tetrimono.h"
 #include "Grid.h"
-#include <iostream>
 
 
 Tetrimono::Tetrimono(int par1, Grid* par2Grid) {

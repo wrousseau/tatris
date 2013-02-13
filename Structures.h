@@ -10,7 +10,7 @@ typedef struct
 
 // valuesEnumeration représentes toutes les position possibles de chaque tétrimono
 //on l'appelle de la sorte : valuesEnumeration[typeTetrimono][configuration_rotation][ligne][colonne]
-static short valuesEnumeration[7][4][5][5] =
+static const short valuesEnumeration[7][4][5][5] =
 {
     {
         {

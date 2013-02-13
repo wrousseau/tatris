@@ -72,14 +72,14 @@ void Game::scoreManage(){
     }
     else if(bonus == 2)
     {
-        score+=100*(level+1);
+        score+=2*100*(level+1);
         grid->deleteLine(tab[0]);
         grid->deleteLine(tab[1]);
         deletedLines+=2;
     }
     else if(bonus == 3)
     {
-        score+=300*(level+1);
+        score+=3*300*(level+1);
         grid->deleteLine(tab[0]);
         grid->deleteLine(tab[1]);
         grid->deleteLine(tab[2]);
@@ -87,7 +87,7 @@ void Game::scoreManage(){
     }
     else if(bonus == 4)
     {
-        score+=1200*(level+1);
+        score+=4*1200*(level+1);
         grid->deleteLine(tab[0]);
         grid->deleteLine(tab[1]);
         grid->deleteLine(tab[2]);
@@ -101,7 +101,7 @@ void Game::scoreManage(){
 }
 
 void Game::checkScore() {
-        if (deletedLines >= 1*(level+1))
+        if (deletedLines >= 10*(level+1))
         {
             level++;
             QString str = "Niveau " + QString::number(level);

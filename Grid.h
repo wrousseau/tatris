@@ -29,7 +29,6 @@ public:
     blockColor getValues(int i, int j);
     int getHighest();
     void setHighest(int par1);
-    void printArea();
     void deleteLine(int i);
 
 };

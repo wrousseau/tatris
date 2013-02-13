@@ -23,6 +23,8 @@ private:
     QTimer *timer;
     Game *currentGame;
     int nextTetrimonoNumber;
+    bool hasLost;
+    int timerForGameOver;
 
 public:
     explicit GridFrame(QWidget *parent = 0);
@@ -33,6 +35,8 @@ public:
     void setBrush(blockColor color, QPainter &p);
     void pause();
     void setTimer(int par1);
+    void setGameState(bool par1);
+    int getTimer();
     
 signals:
     void updateNextBlock(int par1);

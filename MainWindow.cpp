@@ -1,6 +1,5 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include "QDebug"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -85,6 +84,5 @@ void MainWindow::setNextTetrimonoNumber(int par1)
 void MainWindow::updateLevel(QString par1String)
 {
     this->ui->LevelLabel->setText(par1String);
-    qDebug() << 1000-this->currentGame->getLevel()*100;
-    this->ui->MainGrid->setTimer(1000-this->currentGame->getLevel()*100);
+    this->ui->MainGrid->setTimer(0.8*this->ui->MainGrid->getTimer());
 }

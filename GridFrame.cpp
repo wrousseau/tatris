@@ -5,6 +5,8 @@ GridFrame::GridFrame(QWidget *parent) :
 {
     this->setFocusPolicy(Qt::StrongFocus);
     isPlaying = true;
+    timerForGameOver = 1;
+    hasLost = false;
 
 
     timer = new QTimer(this);
@@ -54,6 +56,21 @@ void GridFrame::paintEvent(QPaintEvent*)
 
     QPainter p;
     p.begin(this);
+
+    if (hasLost) {
+        setTimer(100);
+        for (int i = GRID_HEIGHT-timerForGameOver; i < GRID_HEIGHT; i++) {
+            for (int j = 0; j < GRID_WIDTH; j++) {
+                setBrush(BROWN, p);
+                p.drawRect(j*25, i*25, 25, 25);
+            }
+        }
+        timerForGameOver++;
+        if (timerForGameOver == GRID_HEIGHT)
+            pause();
+        return;
+    }
+
     setBrush(currentTetrimono->getColor(), p);
     for (int i = 0; i < 5; i ++) {
         for (int j = 0; j < 5; j++) {
@@ -110,6 +127,10 @@ void GridFrame::update() {
     currentTetrimono->fall(25);
     repaint();
     if (currentTetrimono->isOnFloor()) {
+        if (currentTetrimono->getUpperBound() <= 0) {
+            hasLost = true;
+            return;
+        }
         currentGame->scoreManage();
         delete currentTetrimono; // on désaloue la mémoire  du tétrimono sur le sol
         currentTetrimono = new Tetrimono(nextTetrimonoNumber, grid);
@@ -147,4 +168,14 @@ void GridFrame::pause() {
 void GridFrame::setTimer(int par1)
 {
     timer->setInterval(par1);
+}
+
+void GridFrame::setGameState(bool par1)
+{
+    hasLost = par1;
+}
+
+int GridFrame::getTimer()
+{
+    return timer->interval();
 }
