@@ -103,12 +103,28 @@
       </widget>
      </item>
      <item>
-      <widget class="QWidget" name="NextBlockWidget" native="true">
-       <property name="styleSheet">
-        <string notr="true">background-color: black;
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QWidget" name="NextBlockWidget" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>110</width>
+           <height>110</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>110</width>
+           <height>110</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: black;
 </string>
-       </property>
-      </widget>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
       <widget class="QLabel" name="ScoreLabel">

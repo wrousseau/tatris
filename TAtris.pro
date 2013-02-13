@@ -11,7 +11,6 @@ TARGET = TAtris2
 
 TEMPLATE = app
 
-CONFIG += console
 
 
 SOURCES += main.cpp \

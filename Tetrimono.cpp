@@ -5,8 +5,7 @@
 
 Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     onFloor = false;
-    coord.x1=0;
-    coord.x2=0;
+
     rotation = 0;
     grid = par2Grid;
     blockType = par1;
@@ -15,6 +14,8 @@ Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     farthests[2] = 125;
     farthests[3] = 125;
     initializeValues(par1, 0);
+    coord.x1=((GRID_WIDTH)*25/2 - 25)-farthests[0];
+    coord.x2=-farthests[2];
     setColor();
 }
 

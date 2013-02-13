@@ -12,7 +12,7 @@ Grid::Grid() {
 }
 
 bool Grid::isInBounds(int par1, int par2) {
-    if (par1 <= (GRID_WIDTH - 1)*25 && par1 >= 0 && par2 <= GRID_HEIGHT*25 && par2 >= 0) {
+    if (par1 <= (GRID_WIDTH-1)*25 && par1 >= 0 && par2 <= (GRID_HEIGHT-1)*25 && par2 >= 0) {
 
         return true;
     }

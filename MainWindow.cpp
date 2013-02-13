@@ -20,7 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     player = new QMediaPlayer;
     qDebug() << QDir::current().path() +  QString("salsa.mp3");
-    player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
+    //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
+    player->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/salsa.mp3"));
     player->setVolume(50);
     //player->play();
 
