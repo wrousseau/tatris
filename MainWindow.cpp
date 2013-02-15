@@ -21,11 +21,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->MainGrid, SIGNAL(updateNextBlock(int)), this, SLOT(setNextTetrimonoNumber(int)));
 
 
-    player = new QMediaPlayer;
-    //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-    player->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/salsa.mp3"));
-    player->setVolume(50);
-    player->play();
+
+
+
+
 
     sendGameToGridFrame(currentGame);
     sendGridToGridFrame(grid);

@@ -2,6 +2,7 @@
 #define PARTIE_H
 
 #include "Grid.h"
+#include <QMediaPlayer>
 #include <QObject>
 
 
@@ -15,6 +16,8 @@ private:
     unsigned deletedLines;
     bool gameOn;
     Grid* grid;
+    QMediaPlayer *oneLineSound;
+    QMediaPlayer *fourLinesSound;
 
 signals:
     void updateScore(int i);

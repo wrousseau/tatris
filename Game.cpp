@@ -6,6 +6,16 @@ Game::Game(Grid* par1Grid) {
     level = 0;
     score = 0;
     deletedLines = 0;
+
+    oneLineSound = new QMediaPlayer;
+    //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
+    oneLineSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/oneLine.mp3"));
+    oneLineSound->setVolume(100);
+
+    fourLinesSound = new QMediaPlayer;
+    //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
+    fourLinesSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/fourLines.mp3"));
+    fourLinesSound->setVolume(100);
 }
 
 Game::~Game() {}
@@ -69,6 +79,7 @@ void Game::scoreManage(){
         score+=40*(level+1);
         grid->deleteLine(tab[0]);
         deletedLines++;
+        oneLineSound->play();
     }
     else if(bonus == 2)
     {
@@ -76,6 +87,8 @@ void Game::scoreManage(){
         grid->deleteLine(tab[0]);
         grid->deleteLine(tab[1]);
         deletedLines+=2;
+        oneLineSound->play();
+
     }
     else if(bonus == 3)
     {
@@ -84,6 +97,8 @@ void Game::scoreManage(){
         grid->deleteLine(tab[1]);
         grid->deleteLine(tab[2]);
         deletedLines+=3;
+        oneLineSound->play();
+
     }
     else if(bonus == 4)
     {
@@ -93,6 +108,8 @@ void Game::scoreManage(){
         grid->deleteLine(tab[2]);
         grid->deleteLine(tab[3]);
         deletedLines+=4;
+        fourLinesSound->play();
+
     }
 
     emit updateScore(score);

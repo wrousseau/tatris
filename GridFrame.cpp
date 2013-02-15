@@ -10,8 +10,22 @@ GridFrame::GridFrame(QWidget *parent) :
 
 
     timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(1000);
+        connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+        timer->start(1000);
+        fallingTimer = new QTimer(this);
+        connect(fallingTimer,SIGNAL(timeout()), this, SLOT(updateFalling()));
+
+        gameOverSound = new QMediaPlayer;
+        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
+        gameOverSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/gameOver.mp3"));
+        gameOverSound->setVolume(75);
+
+        music = new QMediaPlayer;
+        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
+        music->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/salsa.mp3"));
+        music->setVolume(50);
+        music->play();
+
 }
 
 void GridFrame::setNextTetrimonoNumber(int par1)
@@ -66,8 +80,11 @@ void GridFrame::paintEvent(QPaintEvent*)
             }
         }
         timerForGameOver++;
-        if (timerForGameOver == GRID_HEIGHT)
+        if (timerForGameOver == GRID_HEIGHT) {
             pause();
+            music->stop();
+            gameOverSound->play();
+        }
         return;
     }
 
@@ -107,8 +124,8 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
                 repaint();
                 break;
             case Qt::Key_Down:
-                currentTetrimono->fall(25);
-                repaint();
+                if (!fallingTimer->isActive())
+                    fallingTimer->start(50);
                 break;
             case Qt::Key_P:
                 pause();
@@ -120,7 +137,18 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
                 currentTetrimono->rotate();
                 repaint();
                 break;
-        }
+    }
+}
+
+void GridFrame::keyReleaseEvent(QKeyEvent *k)
+{
+    switch(k->key()){
+
+            case Qt::Key_Down:
+            fallingTimer->stop();
+            break;
+
+    }
 }
 
 void GridFrame::update() {
@@ -140,6 +168,12 @@ void GridFrame::update() {
     }
     QWidget::update();
 }
+
+void GridFrame::updateFalling() {
+    currentTetrimono->fall(25);
+    repaint();
+}
+
 
 void GridFrame::setTetrimono(Tetrimono* par1Tetrimono) {
     currentTetrimono = par1Tetrimono;

@@ -3,6 +3,8 @@
 
 #include "Structures.h"
 #include "Grid.h"
+#include <QMediaPlayer>
+
 
 class Tetrimono // Représente le symbole en train de tomber
 {
@@ -15,6 +17,10 @@ class Tetrimono // Représente le symbole en train de tomber
         Grid* grid;
         int farthests[4]; // left, right, up, down || représente la distance de vide minimale dans chaque direction
         short values[5][5]; // représente la matrice du Tétrimono qui tombe, elle peut prendre 4 valeurs en fonction de la rotation
+        QMediaPlayer* rotateSound;
+        QMediaPlayer* fallSound;
+
+
 
     public:
         Tetrimono(int par1, Grid* par2Grid);

@@ -21,10 +21,14 @@ private:
     Grid *grid;
     bool isPlaying;
     QTimer *timer;
+    QTimer *fallingTimer;
     Game *currentGame;
     int nextTetrimonoNumber;
     bool hasLost;
     int timerForGameOver;
+    QMediaPlayer* music;
+    QMediaPlayer* gameOverSound;
+
 
 public:
     explicit GridFrame(QWidget *parent = 0);
@@ -45,7 +49,9 @@ signals:
 public slots:
     void paintEvent(QPaintEvent*);
     void keyPressEvent( QKeyEvent *k );
+    void keyReleaseEvent( QKeyEvent *k);
     void update();
+    void updateFalling();
 
 };
 

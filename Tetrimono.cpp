@@ -16,6 +16,18 @@ Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     coord.x1=((GRID_WIDTH)*25/2 - 25)-farthests[0];
     coord.x2=-farthests[2];
     setColor();
+
+
+
+        rotateSound = new QMediaPlayer;
+        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
+        rotateSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/rotate.mp3"));
+        rotateSound->setVolume(50);
+
+        fallSound = new QMediaPlayer;
+        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
+        fallSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/fall.mp3"));
+        fallSound->setVolume(50);
 }
 
 Tetrimono::~Tetrimono() {
@@ -66,6 +78,9 @@ void Tetrimono::rotate() {
         {
             if((values[i][j] != 0) && (grid->getValues(i+(coord.x2/25), j+(coord.x1/25)) != EMPTY))//Si une case du tetrimono chevauche avec un block non vide de la grille
                 merging = true;
+            if(coord.x2 < 0)
+                merging = false;
+
         }
     }
     if(merging)//s'il y a chevauchement on annule la rotation
@@ -73,6 +88,10 @@ void Tetrimono::rotate() {
         rotation -= 1;
         rotation %= 4;
         initializeValues(blockType, rotation);
+    }
+    else {
+        rotateSound->stop();
+        rotateSound->play();
     }
     return;
 }
@@ -302,6 +321,8 @@ int Tetrimono::fall(int par1) {
         return 1;
     }
     if (!onFloor) {
+        fallSound->stop();
+        fallSound->play();
         onFloor = true;
         grid->fillGrid(this);
         grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[2])/25);

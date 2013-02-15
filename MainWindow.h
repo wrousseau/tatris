@@ -39,7 +39,6 @@ private:
     Ui::MainWindow *ui;
     Game* currentGame;
     Grid* grid;
-    QMediaPlayer* player;
     QImage tetrimonoImages[7];
     int nextTetrimonoNumber;
 
