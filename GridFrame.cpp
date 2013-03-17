@@ -1,4 +1,5 @@
 #include "GridFrame.h"
+#include <iostream>
 
 GridFrame::GridFrame(QWidget *parent) :
     QFrame(parent)
@@ -10,8 +11,8 @@ GridFrame::GridFrame(QWidget *parent) :
 
 
     timer = new QTimer(this);
-        connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-        timer->start(1000);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+        timer->start(1000); std::cout << currentGame->getLevel() << std::endl;
         fallingTimer = new QTimer(this);
         connect(fallingTimer,SIGNAL(timeout()), this, SLOT(updateFalling()));
 
@@ -72,7 +73,7 @@ void GridFrame::paintEvent(QPaintEvent*)
     p.begin(this);
 
     if (hasLost) {
-        setTimer(100);
+
         for (int i = GRID_HEIGHT-timerForGameOver; i < GRID_HEIGHT; i++) {
             for (int j = 0; j < GRID_WIDTH; j++) {
                 setBrush(BROWN, p);
@@ -152,8 +153,15 @@ void GridFrame::keyReleaseEvent(QKeyEvent *k)
 }
 
 void GridFrame::update() {
+    float tmp = (float)15/19;
+
     currentTetrimono->fall(25);
     repaint();
+    qDebug() << hasLost;
+    if(!hasLost)
+        setTimer(1000*tmp/(currentGame->getLevel() + tmp));
+    else
+        setTimer(75);
     if (currentTetrimono->isOnFloor()) {
         if (currentTetrimono->getUpperBound() <= 0) {
             hasLost = true;
