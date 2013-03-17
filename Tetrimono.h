@@ -11,13 +11,13 @@ class Tetrimono // Représente le symbole en train de tomber
     protected:
         point coord;
         int blockType;
-        blockColor color;
-        short moveTry;
-        int rotation;
+        blockColor color;// ENUM définie dans structures.h
+        short moveTry;//nombre de tentatives d'aller à gauche ou à droite depuis le dernier fall
+        int rotation;//donne l'angle de la pièce (0<=> 0°, 3<=> 270°)
         bool onScreen, onFloor;
         Grid* grid;
         int farthests[4]; // left, right, up, down || représente la distance de vide minimale dans chaque direction
-        short values[5][5]; // représente la matrice du Tétrimono qui tombe, elle peut prendre 4 valeurs en fonction de la rotation
+        short values[5][5]; // représente la matrice du Tétrimono qui tombe, elle peut prendre 4 valeurs en fonction de la rotation (0 = case vide, 1 = case pleine)
         QMediaPlayer* rotateSound;
         QMediaPlayer* fallSound;
 
