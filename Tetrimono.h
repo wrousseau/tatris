@@ -12,6 +12,7 @@ class Tetrimono // Représente le symbole en train de tomber
         point coord;
         int blockType;
         blockColor color;
+        short moveTry;
         int rotation;
         bool onScreen, onFloor;
         Grid* grid;
@@ -32,6 +33,7 @@ class Tetrimono // Représente le symbole en train de tomber
         bool isTouchingBlockDown();
         bool isTouchingBlockLeft();
         bool isTouchingBlockRight();
+        bool allowedToMove(unsigned level);
         blockColor getColor();
         int getX();
         int getLeftBound();
@@ -46,8 +48,8 @@ class Tetrimono // Représente le symbole en train de tomber
         void setY(int par1);
         void setColor();
         int fall(int par1);
-        int moveLeft();
-        int moveRight();
+        int moveLeft(unsigned level);
+        int moveRight(unsigned level);
         ~Tetrimono();
 
 };

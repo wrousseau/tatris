@@ -116,12 +116,12 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
     switch(k->key()){
 
             case Qt::Key_Left:
-                currentTetrimono->moveLeft();
+                currentTetrimono->moveLeft(currentGame->getLevel());
                 repaint();
 
                 break;
             case Qt::Key_Right:
-                currentTetrimono->moveRight();
+                currentTetrimono->moveRight(currentGame->getLevel());
                 repaint();
                 break;
             case Qt::Key_Down:
@@ -157,7 +157,6 @@ void GridFrame::update() {
 
     currentTetrimono->fall(25);
     repaint();
-    qDebug() << hasLost;
     if(!hasLost)
         setTimer(1000*tmp/(currentGame->getLevel() + tmp));
     else
