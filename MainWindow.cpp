@@ -1,3 +1,10 @@
+/*!
+ * \file MainWindow.cpp
+ * \brief Jeu TAtris basé sur Tétris
+ * \author Simon MANCHEL, Woody ROUSSEAU
+ * \version 1.0
+ */
+
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 

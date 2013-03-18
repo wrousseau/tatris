@@ -1,3 +1,10 @@
+/*!
+ * \file Game.cpp
+ * \brief Jeu TAtris basé sur Tétris
+ * \author Simon MANCHEL, Woody ROUSSEAU
+ * \version 1.0
+ */
+
 #include "Game.h"
 
 Game::Game(Grid* par1Grid) {
