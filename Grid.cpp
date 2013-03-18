@@ -11,6 +11,7 @@ Grid::Grid()
             area[i][j] = EMPTY;
         }
     }
+
 }
 
 bool Grid::isInBounds(int par1, int par2) {

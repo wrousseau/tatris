@@ -14,10 +14,13 @@ Game::Game(Grid* par1Grid) {
     fourLinesSound = new QMediaPlayer;
     fourLinesSound->setMedia(QUrl::fromLocalFile(globalPath + "fourLines.mp3"));
     fourLinesSound->setVolume(100);
+
 }
 
-Game::~Game()
-{
+
+Game::~Game() {
+    delete oneLineSound;
+    delete fourLinesSound;
 }
 
 unsigned Game::getLevel()

@@ -41,6 +41,7 @@ private:
     Ui::MainWindow *ui;
     Game* currentGame;
     Grid* grid;
+    Tetrimono* nextBlock;
     QImage tetrimonoImages[7];
     int nextTetrimonoNumber;
 };
