@@ -26,8 +26,8 @@ Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
 
 Tetrimono::~Tetrimono()
 {
-    delete fallSound;
-    delete rotateSound;
+    //delete fallSound;
+    //delete rotateSound;
 }
 
 void Tetrimono::initializeValues(int par1, int par2) {

@@ -6,7 +6,6 @@
 #include <QtGui>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
-#include <QObject>
 #include "MainWindow.h"
 
 

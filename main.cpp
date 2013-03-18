@@ -1,9 +1,7 @@
 #include "MenuWindow.h"
 #include <QApplication>
 #include <time.h>
-#include <QString>
 #include <QDir>
-#include <qDebug>
 
 QString globalPath;
 

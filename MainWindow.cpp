@@ -38,7 +38,6 @@ MainWindow::~MainWindow()
     delete ui;
     delete grid;
     delete currentGame;
-    delete tetrimonoImages;
 }
 
 void MainWindow::sendObjectsToGridFrame(Game* par1Game, Grid* par2Grid, Tetrimono* par3Tetrimono, int par4)
