@@ -16,7 +16,10 @@ Game::Game(Grid* par1Grid) {
     fourLinesSound->setVolume(100);
 }
 
-Game::~Game() {}
+Game::~Game() {
+    delete oneLineSound;
+    delete fourLinesSound;
+}
 
 unsigned Game::getLevel() {
     return level;

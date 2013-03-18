@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // On définit le premier Tetrimono ainsi que le suivant et on instancie
     int first = rand() % 7;
     nextTetrimonoNumber = rand() % 7;
-    Tetrimono* nextBlock = new Tetrimono(first, grid);
+    nextBlock = new Tetrimono(first, grid);
 
     // Setup de l'interface
     ui->setupUi(this);
@@ -38,6 +38,7 @@ MainWindow::~MainWindow()
     delete ui;
     delete grid;
     delete currentGame;
+    delete nextBlock;
 }
 
 void MainWindow::sendObjectsToGridFrame(Game* par1Game, Grid* par2Grid, Tetrimono* par3Tetrimono, int par4)
@@ -79,5 +80,6 @@ void MainWindow::goToMenu()
     this->hide();
     emit goToMenuSignal();
     delete this;
+    qDebug() << "test";
 }
 
