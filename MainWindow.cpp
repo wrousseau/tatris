@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(currentGame, SIGNAL(updateLevel(QString)), this, SLOT(updateLevel(QString)));
     QObject::connect(ui->MainGrid, SIGNAL(updateNextBlock(int)), this, SLOT(setNextTetrimonoNumber(int)));
     QObject::connect(ui->MainGrid, SIGNAL(goToMenuSignal()), this, SLOT(goToMenu()));
-    QObject::connect(ui->ExitButton, SIGNAL(clicked()), this, SLOT(goToMenu()));
+    QObject::connect(ui->ExitButton, SIGNAL(clicked()), this, SLOT(close()));
 }
 
 MainWindow::~MainWindow()
@@ -62,7 +62,8 @@ int MainWindow::getNextTetrimonoNumber()
 
 void MainWindow::setNextTetrimonoNumber(int par1)
 {
-    if (par1 >= 0 && par1 < 7) {
+    if (par1 >= 0 && par1 < 7)
+    {
         nextTetrimonoNumber = par1;
         ui->nextLabel->setPixmap(QPixmap::fromImage(tetrimonoImages[nextTetrimonoNumber]));
     }

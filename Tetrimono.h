@@ -11,12 +11,12 @@ extern QString globalPath;
 
 class Tetrimono // Représente le symbole en train de tomber
 {
-    protected:
+    private:
         point coord;
         int blockType;
         blockColor color;// ENUM définie dans structures.h
-        short moveTry;//nombre de tentatives d'aller à gauche ou à droite depuis le dernier fall
-        int rotation;//donne l'angle de la pièce (0<=> 0°, 3<=> 270°)
+        short moveTry; //nombre de tentatives d'aller à gauche ou à droite depuis le dernier fall
+        int rotation; //donne l'angle de la pièce (0<=> 0°, 3<=> 270°)
         bool onScreen, onFloor;
         Grid* grid;
         int farthests[4]; // left, right, up, down || représente la distance de vide minimale dans chaque direction

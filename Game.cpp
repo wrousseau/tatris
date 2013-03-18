@@ -16,13 +16,17 @@ Game::Game(Grid* par1Grid) {
     fourLinesSound->setVolume(100);
 }
 
-Game::~Game() {}
+Game::~Game()
+{
+}
 
-unsigned Game::getLevel() {
+unsigned Game::getLevel()
+{
     return level;
 }
 
-void Game::setLevel(unsigned par1) {
+void Game::setLevel(unsigned par1)
+{
     if (par1 > 0)
     {
         level = par1;
@@ -95,7 +99,6 @@ void Game::scoreManage()
         oneLineSound->stop();
         fourLinesSound->stop();
         oneLineSound->play();
-
     }
     else if(bonus == 3)
     {
