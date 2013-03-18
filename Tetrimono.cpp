@@ -7,6 +7,7 @@
 
 #include "Tetrimono.h"
 #include "Grid.h"
+#include "unistd.h"
 
 
 Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
@@ -337,9 +338,10 @@ int Tetrimono::fall(int par1) {
         return 1;
     }
     if (!onFloor) {
+        onFloor = true;
         fallSound->stop();
         fallSound->play();
-        onFloor = true;
+        sleep(1.2); //Si on enlève le sleep, le son n'est joué que quand on maintient la flèche du bas (sous Laptop Simon, Windows)
         grid->fillGrid(this);
         grid->setHighest(grid->getHighest() - (125 - farthests[3] - farthests[2])/25);
     }
@@ -348,7 +350,7 @@ int Tetrimono::fall(int par1) {
 
 int Tetrimono::moveLeft(unsigned level) {
 
-    if (grid->isInBounds(getLeftBound()-25, coord.x2) && !onFloor && !isTouchingBlockLeft() && allowedToMove(level)) {
+    if (grid->isInBounds(getLeftBound()-25, coord.x2) && !onFloor && ((!isTouchingBlockLeft() || coord.x2 < 50)) && allowedToMove(level))   {
         coord.x1 -= 25;
         return 1;
     }
@@ -357,7 +359,7 @@ int Tetrimono::moveLeft(unsigned level) {
 
 int Tetrimono::moveRight(unsigned level) {
 
-    if (grid->isInBounds(getRightBound()+25, coord.x2) && !onFloor && !isTouchingBlockRight() && allowedToMove(level)){
+    if (grid->isInBounds(getRightBound()+25, coord.x2) && !onFloor && ((!isTouchingBlockRight() || coord.x2 <50)) && allowedToMove(level)) {
         coord.x1 += 25;
         return 1;
     }

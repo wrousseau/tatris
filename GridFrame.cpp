@@ -6,6 +6,8 @@
  */
 
 #include "GridFrame.h"
+#include "time.h"
+#include "unistd.h"
 
 GridFrame::GridFrame(QWidget *parent) :
     QFrame(parent)
@@ -106,7 +108,7 @@ void GridFrame::paintEvent(QPaintEvent*)
         if (timerForGameOver == GRID_HEIGHT) {
             pause();
             music->stop();
-            gameOverSound->play();
+            gameOverSound->play();qDebug() << "yuouhou";
         }
         return;
     }
@@ -145,8 +147,9 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
                 repaint();
                 break;
             case Qt::Key_Down:
-                if (!fallingTimer->isActive())
-                    fallingTimer->start(50);
+                if (!fallingTimer->isActive()){
+                    fallingTimer->start(20);
+                }
                 break;
             case Qt::Key_P:
                 pause();
