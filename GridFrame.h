@@ -20,7 +20,7 @@ private:
     Tetrimono *currentTetrimono;
     Grid *grid;
     bool isPlaying;
-    QTimer *timer;
+    QTimer *timer;// timer entre chaque fall du Tetrimono
     QTimer *fallingTimer;
     Game *currentGame;
     int nextTetrimonoNumber;

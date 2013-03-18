@@ -4,6 +4,7 @@
 
 Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     onFloor = false;
+    moveTry = 0;
 
     rotation = 0;
     grid = par2Grid;
@@ -158,6 +159,17 @@ bool Tetrimono::isTouchingBlockRight()
 
     }
     return false;
+}
+
+bool Tetrimono::allowedToMove(unsigned level){
+
+    if(moveTry < ((float)27 / (level + 4.5)))
+    {
+        moveTry++;
+        return true;
+    }
+    else
+        return false;
 }
 
 blockColor Tetrimono::getColor(){
@@ -316,6 +328,7 @@ void Tetrimono::setColor(){
 }
 
 int Tetrimono::fall(int par1) {
+    moveTry = 0;
     if (grid->isInBounds(getLeftBound(),getLowerBound()+par1) && !isTouchingBlockDown()) {
         coord.x2 += par1;
         return 1;
@@ -330,18 +343,18 @@ int Tetrimono::fall(int par1) {
     return 0;
 }
 
-int Tetrimono::moveLeft() {
+int Tetrimono::moveLeft(unsigned level) {
 
-    if (grid->isInBounds(getLeftBound()-25, coord.x2) && !onFloor && !isTouchingBlockLeft()) {
+    if (grid->isInBounds(getLeftBound()-25, coord.x2) && !onFloor && !isTouchingBlockLeft() && allowedToMove(level)) {
         coord.x1 -= 25;
         return 1;
     }
     return 0;
 }
 
-int Tetrimono::moveRight() {
+int Tetrimono::moveRight(unsigned level) {
 
-    if (grid->isInBounds(getRightBound()+25, coord.x2) && !onFloor && !isTouchingBlockRight()){
+    if (grid->isInBounds(getRightBound()+25, coord.x2) && !onFloor && !isTouchingBlockRight() && allowedToMove(level)){
         coord.x1 += 25;
         return 1;
     }
