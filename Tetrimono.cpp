@@ -22,12 +22,12 @@ Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
 
         rotateSound = new QMediaPlayer;
         //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-        rotateSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/rotate.mp3"));
+        rotateSound->setMedia(QUrl::fromLocalFile(globalPath + "rotate.mp3"));
         rotateSound->setVolume(50);
 
         fallSound = new QMediaPlayer;
         //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-        fallSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/fall.mp3"));
+        fallSound->setMedia(QUrl::fromLocalFile(globalPath + "fall.mp3"));
         fallSound->setVolume(50);
 }
 

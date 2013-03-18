@@ -5,6 +5,8 @@
 #include "Grid.h"
 #include <QMediaPlayer>
 
+extern QString globalPath;
+
 
 class Tetrimono // Représente le symbole en train de tomber
 {

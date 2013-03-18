@@ -5,6 +5,7 @@
 #include <QMediaPlayer>
 #include <QObject>
 
+extern QString globalPath;
 
 class Game: public QObject {
 

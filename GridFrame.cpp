@@ -1,5 +1,4 @@
 #include "GridFrame.h"
-#include <iostream>
 
 GridFrame::GridFrame(QWidget *parent) :
     QFrame(parent)
@@ -12,18 +11,17 @@ GridFrame::GridFrame(QWidget *parent) :
 
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-        timer->start(1000); std::cout << currentGame->getLevel() << std::endl;
+        timer->start(1000);
         fallingTimer = new QTimer(this);
         connect(fallingTimer,SIGNAL(timeout()), this, SLOT(updateFalling()));
 
         gameOverSound = new QMediaPlayer;
         //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-        gameOverSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/gameOver.mp3"));
-        gameOverSound->setVolume(75);
+        gameOverSound->setMedia(QUrl::fromLocalFile(globalPath + "gameOver.mp3"));
 
         music = new QMediaPlayer;
         //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-        music->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/salsa.mp3"));
+        music->setMedia(QUrl::fromLocalFile(globalPath + "salsa.mp3"));
         music->setVolume(50);
         music->play();
 

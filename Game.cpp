@@ -9,12 +9,12 @@ Game::Game(Grid* par1Grid) {
 
     oneLineSound = new QMediaPlayer;
     //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-    oneLineSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/oneLine.mp3"));
+    oneLineSound->setMedia(QUrl::fromLocalFile(globalPath + "oneLine.mp3"));
     oneLineSound->setVolume(100);
 
     fourLinesSound = new QMediaPlayer;
     //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-    fourLinesSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/fourLines.mp3"));
+    fourLinesSound->setMedia(QUrl::fromLocalFile(globalPath + "fourLines.mp3"));
     fourLinesSound->setVolume(100);
 }
 

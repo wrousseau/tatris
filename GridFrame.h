@@ -11,6 +11,8 @@
 #include "Game.h"
 #include "MainWindow.h"
 
+extern QString globalPath;
+
 class GridFrame : public QFrame
 {
     Q_OBJECT
