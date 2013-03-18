@@ -1,3 +1,10 @@
+/*!
+ * \file Grid.cpp
+ * \brief Jeu TAtris basé sur Tétris
+ * \author Simon MANCHEL, Woody ROUSSEAU
+ * \version 1.0
+ */
+
 #include "Grid.h"
 #include "Tetrimono.h"
 
@@ -41,7 +48,7 @@ bool Grid::isFree(point par1)
 
 bool Grid::isNotOccupied(point par1)
 {
-    if(area[par1.x1][par1.x2] == RED)
+    if(area[par1.x1/25][par1.x2/25] != EMPTY)
         return true;
     else
         return false;

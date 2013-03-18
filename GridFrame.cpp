@@ -1,3 +1,10 @@
+/*!
+ * \file GridFrame.cpp
+ * \brief Jeu TAtris basé sur Tétris
+ * \author Simon MANCHEL, Woody ROUSSEAU
+ * \version 1.0
+ */
+
 #include "GridFrame.h"
 
 GridFrame::GridFrame(QWidget *parent) :

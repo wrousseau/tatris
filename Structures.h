@@ -1,7 +1,19 @@
 #ifndef STRUCTURES_H
 #define STRUCTURES_H
 
+/*!
+ * \file Structures.h
+ * \brief Jeu TAtris basé sur Tétris
+ * \author Simon MANCHEL, Woody ROUSSEAU
+ * \version 1.0
+ */
 
+/**
+ * \struct point
+ * \brief Coordonnées d'un point
+ *
+ * Coordonnées d'un Tétrimono. S'incrément par 25 (blocs de 25 pixels)
+ */
 typedef struct
          {
           int x1;
