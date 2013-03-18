@@ -190,9 +190,23 @@ background-color: black;</string>
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="MenuButton">
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/ressources/ressources/galaxy.jpg);
+color:white;
+margin:3px;</string>
+       </property>
+       <property name="text">
+        <string>(P) Pause</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="ExitButton">
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">background-image: url(:/ressources/ressources/galaxy3.jpg);
+color:white;
+margin:3px;</string>
        </property>
        <property name="text">
         <string>(ESC) Quitter</string>

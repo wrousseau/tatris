@@ -4,6 +4,7 @@
 #include "Grid.h"
 #include <QMediaPlayer>
 #include <QObject>
+#include <QDir>
 
 extern QString globalPath;
 

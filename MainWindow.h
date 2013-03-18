@@ -34,6 +34,10 @@ public:
 public slots:
     void setNextTetrimonoNumber(int par1);
     void updateLevel(QString par1String);
+    void goToMenu();
+
+signals:
+        void goToMenuSignal();
     
 private:
     Ui::MainWindow *ui;

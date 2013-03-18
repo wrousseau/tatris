@@ -128,6 +128,8 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
                 break;
             case Qt::Key_P:
                 pause();
+                music->stop();
+                emit goToMenuSignal();
                 break;
             case Qt::Key_Escape:
                 exit(0);
@@ -196,9 +198,11 @@ void GridFrame::setGame(Game *par1Game)
 void GridFrame::pause() {
     if (isPlaying) {
         timer->stop();
+        music->setVolume(10);
     }
     else {
         timer->start(1000);
+        music->setVolume(50);
     }
     update();
     isPlaying = !isPlaying;
