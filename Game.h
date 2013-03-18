@@ -6,6 +6,8 @@
 #include <QObject>
 #include <QDir>
 
+extern bool isMusicOn;
+extern bool areSoundsOn;
 extern QString globalPath;
 
 class Game: public QObject {
@@ -18,12 +20,13 @@ private:
     unsigned deletedLines;
     bool gameOn;
     Grid* grid;
+public:
     QMediaPlayer *oneLineSound;
     QMediaPlayer *fourLinesSound;
 
 signals:
     void updateScore(int i);
-    void updateLevel(QString par1);
+    void updateLevel(QString par1, int par2);
 
 
 public:

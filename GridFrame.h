@@ -12,6 +12,7 @@
 #include "MainWindow.h"
 
 extern QString globalPath;
+extern QString currentTheme;
 
 class GridFrame : public QFrame
 {
@@ -28,6 +29,7 @@ private:
     int nextTetrimonoNumber;
     bool hasLost;
     int timerForGameOver;
+public:
     QMediaPlayer* music;
     QMediaPlayer* gameOverSound;
 
@@ -37,10 +39,11 @@ public:
     ~GridFrame();
     void setObjects(Game* par1Game, Grid* par2Grid, Tetrimono* par3Tetrimono, int par4);
     void setBrush(blockColor color, QPainter &p);
-    void pause();
     void setTimer(int par1);
     void setGameState(bool par1);
     int getTimer();
+    void showPauseMenu();
+
     
 signals:
     void updateNextBlock(int par1);
@@ -53,6 +56,10 @@ public slots:
     void keyReleaseEvent( QKeyEvent *k);
     void update();
     void updateFalling();
+    void replayMusic(QMediaPlayer::MediaStatus status);
+    void pause();
+
+
 
 };
 

@@ -31,7 +31,7 @@ public:
 
 public slots:
     void setNextTetrimonoNumber(int par1);
-    void updateLevel(QString par1String);
+    void updateLevel(QString par1String, int par1);
     void goToMenu();
 
 signals:

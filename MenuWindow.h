@@ -7,6 +7,11 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include "MainWindow.h"
+#include "OptionsWindow.h"
+#include <QCheckBox>
+
+extern bool isMusicOn;
+extern bool areSoundsOn;
 
 
 namespace Ui {
@@ -24,6 +29,10 @@ public:
 public slots:
     void launchGame();
     void showMenu();
+    void launchOptions();
+
+
+
 
     
 private:

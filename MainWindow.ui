@@ -146,12 +146,15 @@ background-image: url(:/ressources/ressources/grid.png);
       <widget class="QLCDNumber" name="ScoreLCD">
        <property name="font">
         <font>
-         <pointsize>30</pointsize>
+         <pointsize>20</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">color:black;
 background-color: black;</string>
+       </property>
+       <property name="digitCount">
+        <number>8</number>
        </property>
       </widget>
      </item>
@@ -190,7 +193,7 @@ background-color: black;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="MenuButton">
+      <widget class="QPushButton" name="pauseButton">
        <property name="styleSheet">
         <string notr="true">background-image: url(:/ressources/ressources/galaxy.jpg);
 color:white;
@@ -202,14 +205,14 @@ margin:3px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="ExitButton">
+      <widget class="QPushButton" name="menuButton">
        <property name="styleSheet">
         <string notr="true">background-image: url(:/ressources/ressources/galaxy3.jpg);
 color:white;
 margin:3px;</string>
        </property>
        <property name="text">
-        <string>(ESC) Quitter</string>
+        <string>(ESC) Menu</string>
        </property>
       </widget>
      </item>

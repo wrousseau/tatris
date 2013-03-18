@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>OptionsWindow</class>
+ <widget class="QMainWindow" name="OptionsWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>570</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>570</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>500</width>
+    <height>570</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"> background-image: url(:/ressources/ressources/background.png);</string>
+   </property>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>403</width>
+      <height>541</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="changeMusic">
+       <property name="minimumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> -qt-block-indent:0; text-indent:0px;font-size:36px;
+background-image: url(:/ressources/ressources/galaxy.jpg);
+border-style: outset;
+     border-width: 2px;
+     border-color: white;
+border-radius: 10px;
+color:white</string>
+       </property>
+       <property name="text">
+        <string>Musique (Choix)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="play_button_2">
+       <property name="minimumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> -qt-block-indent:0; text-indent:0px;font-size:36px;
+background-image: url(:/ressources/ressources/galaxy.jpg);
+border-style: outset;
+     border-width: 2px;
+     border-color: white;
+border-radius: 10px;
+color:white</string>
+       </property>
+       <property name="text">
+        <string>Musique (ON/OFF)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="musicbox">
+       <property name="minimumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QCheckBox::indicator {
+     width: 50px;
+     height: 50px;
+margin-left:174px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:/ressources/ressources/yes.png);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:/ressources/ressources/not.png);
+  }
+
+  QCheckBox::indicator:checked:hover
+  {
+    image: url(:/ressources/ressources/yes.png);
+  }
+  QCheckBox::indicator:unchecked:hover
+  {
+    image: url(:/ressources/ressources/not.png);
+  }
+  QCheckBox::indicator:checked:pressed
+  {
+    image: url(:/ressources/ressources/yes.png);
+  }
+  QCheckBox::indicator:unchecked:pressed
+  {
+    image: url(:/ressources/ressources/not.png);
+  }
+  QCheckBox::indicator:checked:disabled
+  {
+    image: url(:/ressources/ressources/yes.png);
+  }
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="play_button_3">
+       <property name="minimumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> -qt-block-indent:0; text-indent:0px;font-size:36px;
+background-image: url(:/ressources/ressources/galaxy2.jpg);
+border-style: outset;
+     border-width: 2px;
+     border-color: white;
+border-radius: 10px;
+color:white</string>
+       </property>
+       <property name="text">
+        <string>Sons</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="soundsbox">
+       <property name="minimumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QCheckBox::indicator {
+     width: 50px;
+     height: 50px;
+margin-left:174px;
+ }
+
+  QCheckBox::indicator:checked
+  {
+    image: url(:/ressources/ressources/yes.png);
+  }
+  QCheckBox::indicator:unchecked
+  {
+    image: url(:/ressources/ressources/not.png);
+  }
+
+  QCheckBox::indicator:checked:hover
+  {
+    image: url(:/ressources/ressources/yes.png);
+  }
+  QCheckBox::indicator:unchecked:hover
+  {
+    image: url(:/ressources/ressources/not.png);
+  }
+  QCheckBox::indicator:checked:pressed
+  {
+    image: url(:/ressources/ressources/yes.png);
+  }
+  QCheckBox::indicator:unchecked:pressed
+  {
+    image: url(:/ressources/ressources/not.png);
+  }
+  QCheckBox::indicator:checked:disabled
+  {
+    image: url(:/ressources/ressources/yes.png);
+  }
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="menu_button">
+       <property name="minimumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>399</width>
+         <height>73</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"> -qt-block-indent:0; text-indent:0px;font-size:36px;
+background-image: url(:/ressources/ressources/galaxy3.jpg);
+border-style: outset;
+     border-width: 2px;
+     border-color: white;
+border-radius: 10px;
+color:white</string>
+       </property>
+       <property name="text">
+        <string>Retour Menu</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -7,20 +7,30 @@ Game::Game(Grid* par1Grid) {
     score = 0;
     deletedLines = 0;
 
-    oneLineSound = new QMediaPlayer;
+    oneLineSound = new QMediaPlayer();
     oneLineSound->setMedia(QUrl::fromLocalFile(globalPath + "oneLine.mp3"));
     oneLineSound->setVolume(100);
+    if (!areSoundsOn)
+    {
+        oneLineSound->setVolume(0);
+    }
 
     fourLinesSound = new QMediaPlayer;
     fourLinesSound->setMedia(QUrl::fromLocalFile(globalPath + "fourLines.mp3"));
     fourLinesSound->setVolume(100);
+    if (!areSoundsOn)
+    {
+        fourLinesSound->setVolume(0);
+    }
 
 }
 
 
 Game::~Game() {
+    #ifdef Q_OS_WIN32
     delete oneLineSound;
     delete fourLinesSound;
+    #endif
 }
 
 unsigned Game::getLevel()
@@ -139,7 +149,7 @@ void Game::checkScore()
         {
             level++;
             QString str = "Niveau " + QString::number(level);
-            emit updateLevel(str);
+            emit updateLevel(str,level);
         }
 
 }
