@@ -7,6 +7,7 @@
 
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -34,10 +35,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Connexions Signaux / Slots
     QObject::connect(currentGame, SIGNAL(updateScore(int)), this->ui->ScoreLCD, SLOT(display(int)));
-    QObject::connect(currentGame, SIGNAL(updateLevel(QString)), this, SLOT(updateLevel(QString)));
+    QObject::connect(currentGame, SIGNAL(updateLevel(QString,int)), this, SLOT(updateLevel(QString,int)));
     QObject::connect(ui->MainGrid, SIGNAL(updateNextBlock(int)), this, SLOT(setNextTetrimonoNumber(int)));
     QObject::connect(ui->MainGrid, SIGNAL(goToMenuSignal()), this, SLOT(goToMenu()));
-    QObject::connect(ui->ExitButton, SIGNAL(clicked()), this, SLOT(close()));
+    QObject::connect(ui->menuButton, SIGNAL(clicked()), this, SLOT(goToMenu()));
+    QObject::connect(ui->pauseButton, SIGNAL(clicked()), ui->MainGrid, SLOT(pause()));
+
 }
 
 MainWindow::~MainWindow()
@@ -77,10 +80,13 @@ void MainWindow::setNextTetrimonoNumber(int par1)
     }
 }
 
-void MainWindow::updateLevel(QString par1String)
+void MainWindow::updateLevel(QString par1String, int par1)
 {
     this->ui->LevelLabel->setText(par1String);
     this->ui->MainGrid->setTimer(0.8*this->ui->MainGrid->getTimer());
+    qreal playback = 1.00 + par1/(float)30;
+    qDebug() << playback;
+    this->ui->MainGrid->music->setPlaybackRate(playback);
 }
 
 void MainWindow::goToMenu()

@@ -20,6 +20,7 @@
 #include "MainWindow.h"
 
 extern QString globalPath;
+extern QString currentTheme;
 
 class GridFrame : public QFrame
 {
@@ -36,6 +37,7 @@ private:
     int nextTetrimonoNumber;
     bool hasLost;
     int timerForGameOver;
+public:
     QMediaPlayer* music;
     QMediaPlayer* gameOverSound;
 
@@ -66,12 +68,7 @@ public:
      *  p : Objet QPainter servant à l'affichage
      */
     void setBrush(blockColor color, QPainter &p);
-    /*!
-     *  \brief Pause
-     *
-     *  Met le jeu en pause ou reprend la partie
-     */
-    void pause();
+
     /*!
      *  \brief Réglage du timer
      *  \param par1 : Temps en ms
@@ -87,6 +84,8 @@ public:
      *  \return Temps restant avant la fin du timer (ms)
      */
     int getTimer();
+    void showPauseMenu();
+
     
 signals:
     void updateNextBlock(int par1);
@@ -121,6 +120,15 @@ public slots:
      *  Met à jour la position verticale du Tétrimono
      */
     void updateFalling();
+    void replayMusic(QMediaPlayer::MediaStatus status);
+    /*!
+     *  \brief Pause
+     *
+     *  Met le jeu en pause ou reprend la partie
+     */
+    void pause();
+
+
 
 };
 

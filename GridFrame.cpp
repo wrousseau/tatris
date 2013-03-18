@@ -26,18 +26,32 @@ GridFrame::GridFrame(QWidget *parent) :
 
         gameOverSound = new QMediaPlayer;
         gameOverSound->setMedia(QUrl::fromLocalFile(globalPath + "gameOver.mp3"));
+        if (!areSoundsOn)
+        {
+            gameOverSound->setVolume(0);
+        }
+
 
         music = new QMediaPlayer;
-        music->setMedia(QUrl::fromLocalFile(globalPath + "salsa.mp3"));
+        music->setMedia(QUrl::fromLocalFile(globalPath + currentTheme + ".mp3"));
         music->setVolume(50);
         music->play();
+        if (!isMusicOn)
+        {
+            music->setVolume(0);
+        }
+
+
+        connect(music,SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)), this, SLOT(replayMusic(QMediaPlayer::MediaStatus)));
 }
 
 GridFrame::~GridFrame()
 {
+    #ifdef Q_OS_WIN32
     delete music;
-    delete fallingTimer;
     delete gameOverSound;
+    #endif
+    delete fallingTimer;
     delete timer;
 }
 
@@ -153,11 +167,10 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
                 break;
             case Qt::Key_P:
                 pause();
-                music->stop();
-                emit goToMenuSignal();
                 break;
             case Qt::Key_Escape:
-                exit(0);
+                music->stop();
+                emit goToMenuSignal();
                 break;
             case Qt::Key_Space:
                 currentTetrimono->rotate();
@@ -169,7 +182,6 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
 void GridFrame::keyReleaseEvent(QKeyEvent *k)
 {
     switch(k->key()){
-
             case Qt::Key_Down:
             fallingTimer->stop();
             break;
@@ -206,14 +218,27 @@ void GridFrame::updateFalling() {
     repaint();
 }
 
+
+
+void GridFrame::replayMusic(QMediaPlayer::MediaStatus status)
+{
+   if (status == QMediaPlayer::EndOfMedia) {
+       QTimer::singleShot(2000, music, SLOT(play()));
+       music->play();
+   }
+}
+
+
 void GridFrame::pause() {
     if (isPlaying) {
         timer->stop();
-        music->setVolume(10);
+        if (isMusicOn)
+            music->setVolume(10);
     }
     else {
         timer->start(1000);
-        music->setVolume(50);
+        if (isMusicOn)
+            music->setVolume(50);
     }
     update();
     isPlaying = !isPlaying;
@@ -232,4 +257,8 @@ void GridFrame::setGameState(bool par1)
 int GridFrame::getTimer()
 {
     return timer->interval();
+}
+
+void GridFrame::showPauseMenu()
+{
 }

@@ -6,11 +6,15 @@
  */
 
 #include "MenuWindow.h"
+#include "OptionsWindow.h"
 #include <QApplication>
 #include <time.h>
 #include <QDir>
 
 QString globalPath;
+bool isMusicOn = true;
+bool areSoundsOn = true;
+QString currentTheme = "salsa";
 
 int main(int argc, char *argv[])
 {
@@ -28,7 +32,6 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
     app.setApplicationName("TAtris");
-
     MenuWindow menuWindow; // Initialisation de la fenêtre de menu
     menuWindow.show();
 

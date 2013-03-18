@@ -58,15 +58,15 @@ public:
 
 public slots:
     void setNextTetrimonoNumber(int par1);
+
     /*!
      *  \brief Met à jour le level sur l'interface graphique
      *  \param Par1String : Level en QString
+     *  \param par3 : Niveau en int
+     */
+    void updateLevel(QString par1String, int par2);
 
-     */
-    void updateLevel(QString par1String);
-    /*!
-     *  \brief Ferme la fenêtre de jeu et ouvre le menu
-     */
+
     void goToMenu();
 
 signals:

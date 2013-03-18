@@ -16,7 +16,8 @@ SOURCES += main.cpp \
     Tetrimono.cpp \
     Game.cpp \
     MainWindow.cpp \
-    MenuWindow.cpp
+    MenuWindow.cpp \
+    OptionsWindow.cpp
 
 HEADERS  += \
     Tetrimono.h \
@@ -25,11 +26,13 @@ HEADERS  += \
     GridFrame.h \
     Grid.h \
     MainWindow.h \
-    MenuWindow.h
+    MenuWindow.h \
+    OptionsWindow.h
 
 FORMS    += \
     MainWindow.ui \
-    MenuWindow.ui
+    MenuWindow.ui \
+    OptionsWindow.ui
 
 RESOURCES += \
     Ressources.qrc

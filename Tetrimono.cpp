@@ -27,15 +27,25 @@ Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     rotateSound = new QMediaPlayer;
     rotateSound->setMedia(QUrl::fromLocalFile(globalPath + "rotate.mp3"));
     rotateSound->setVolume(50);
+    if (!areSoundsOn)
+    {
+        rotateSound->setVolume(0);
+    }
     fallSound = new QMediaPlayer;
     fallSound->setMedia(QUrl::fromLocalFile(globalPath + "fall.mp3"));
     fallSound->setVolume(50);
+    if (!areSoundsOn)
+    {
+        fallSound->setVolume(0);
+    }
 }
 
 Tetrimono::~Tetrimono()
 {
+    #ifdef Q_OS_WIN32
     delete fallSound;
     delete rotateSound;
+    #endif
 }
 
 void Tetrimono::initializeValues(int par1, int par2) {
