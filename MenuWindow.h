@@ -50,6 +50,9 @@ public slots:
      *  \brief Affiche la fenêtre menu
      */
     void showMenu();
+    /*!
+     *  \brief Charge les options
+     */
     void launchOptions();
 
 

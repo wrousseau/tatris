@@ -84,6 +84,9 @@ public:
      *  \return Temps restant avant la fin du timer (ms)
      */
     int getTimer();
+    /*!
+     *  \brief Montre le menu pendant la pause
+     */
     void showPauseMenu();
 
     
@@ -120,6 +123,9 @@ public slots:
      *  Met à jour la position verticale du Tétrimono
      */
     void updateFalling();
+    /*!
+     *  \brief Permet de jouer la musique en boucle
+     */
     void replayMusic(QMediaPlayer::MediaStatus status);
     /*!
      *  \brief Pause

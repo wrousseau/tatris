@@ -85,7 +85,6 @@ void MainWindow::updateLevel(QString par1String, int par1)
     this->ui->LevelLabel->setText(par1String);
     this->ui->MainGrid->setTimer(0.8*this->ui->MainGrid->getTimer());
     qreal playback = 1.00 + par1/(float)30;
-    qDebug() << playback;
     this->ui->MainGrid->music->setPlaybackRate(playback);
 }
 

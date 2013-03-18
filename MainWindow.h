@@ -57,6 +57,10 @@ public:
     int getNextTetrimonoNumber();
 
 public slots:
+    /*!
+     *  \brief Permet d'identifier le futur Tetrimono
+     *  \return par1 : Type de Tetrimono
+     */
     void setNextTetrimonoNumber(int par1);
 
     /*!
@@ -66,7 +70,9 @@ public slots:
      */
     void updateLevel(QString par1String, int par2);
 
-
+    /*!
+     *  \brief Permet de se rendre au menu
+     */
     void goToMenu();
 
 signals:

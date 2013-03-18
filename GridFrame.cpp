@@ -34,7 +34,7 @@ GridFrame::GridFrame(QWidget *parent) :
 
         music = new QMediaPlayer;
         music->setMedia(QUrl::fromLocalFile(globalPath + currentTheme + ".mp3"));
-        music->setVolume(50);
+        music->setVolume(70);
         music->play();
         if (!isMusicOn)
         {
@@ -238,7 +238,7 @@ void GridFrame::pause() {
     else {
         timer->start(1000);
         if (isMusicOn)
-            music->setVolume(50);
+            music->setVolume(70);
     }
     update();
     isPlaying = !isPlaying;
