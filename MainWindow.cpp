@@ -80,6 +80,5 @@ void MainWindow::goToMenu()
     this->hide();
     emit goToMenuSignal();
     delete this;
-    qDebug() << "test";
 }
 

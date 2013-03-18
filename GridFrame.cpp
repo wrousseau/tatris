@@ -24,6 +24,15 @@ GridFrame::GridFrame(QWidget *parent) :
         music->play();
 }
 
+GridFrame::~GridFrame()
+{
+    delete music;
+    delete fallingTimer;
+    delete gameOverSound;
+    delete timer;
+}
+
+
 void GridFrame::setObjects(Game *par1Game, Grid *par2Grid, Tetrimono *par3Tetrimono, int par4)
 {
     currentGame=par1Game;
