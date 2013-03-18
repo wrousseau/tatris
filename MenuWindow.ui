@@ -42,11 +42,9 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">#MainWidget
- {background-image: url(:/ressources/ressources/background.png);
-}</string>
+    <string notr="true"> background-image: url(:/ressources/ressources/background.png);</string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>50</x>

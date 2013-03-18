@@ -16,50 +16,58 @@ GridFrame::GridFrame(QWidget *parent) :
         connect(fallingTimer,SIGNAL(timeout()), this, SLOT(updateFalling()));
 
         gameOverSound = new QMediaPlayer;
-        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
         gameOverSound->setMedia(QUrl::fromLocalFile(globalPath + "gameOver.mp3"));
 
         music = new QMediaPlayer;
-        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
         music->setMedia(QUrl::fromLocalFile(globalPath + "salsa.mp3"));
         music->setVolume(50);
         music->play();
-
 }
 
-void GridFrame::setNextTetrimonoNumber(int par1)
+void GridFrame::setObjects(Game *par1Game, Grid *par2Grid, Tetrimono *par3Tetrimono, int par4)
 {
-    nextTetrimonoNumber = par1;
+    currentGame=par1Game;
+    grid=par2Grid;
+    currentTetrimono = par3Tetrimono;
+    nextTetrimonoNumber = par4;
 }
-
 
 void GridFrame::setBrush(blockColor color, QPainter &p){
 
-    if(color == RED){
+    if(color == RED)
+    {
         p.setBrush(Qt::red);
     }
-    else if(color == GREEN){
+    else if(color == GREEN)
+    {
         p.setBrush(Qt::green);
     }
-    else if(color == BLUE){
+    else if(color == BLUE)
+    {
         p.setBrush(Qt::blue);
     }
-    else if(color == YELLOW){
+    else if(color == YELLOW)
+    {
         p.setBrush(Qt::yellow);
     }
-    else if(color == CYAN){
+    else if(color == CYAN)
+    {
         p.setBrush(QColor(0,255,255));
     }
-    else if(color == BROWN){
+    else if(color == BROWN)
+    {
         p.setBrush(QColor(122, 50, 8));
     }
-    else if(color == EMPTY){
+    else if(color == EMPTY)
+    {
         p.setBrush(QColor(0, 0, 0));
     }
-    else if(color == PURPLE){
+    else if(color == PURPLE)
+    {
         p.setBrush(QColor(140, 0, 255));
     }
-    else if(color == ORANGE){
+    else if(color == ORANGE)
+    {
         p.setBrush(QColor(255, 106, 0));
     }
 }
@@ -104,9 +112,7 @@ void GridFrame::paintEvent(QPaintEvent*)
             }
         }
     }
-
     p.end();
-
 }
 
 void GridFrame::keyPressEvent( QKeyEvent *k )
@@ -179,20 +185,6 @@ void GridFrame::update() {
 void GridFrame::updateFalling() {
     currentTetrimono->fall(25);
     repaint();
-}
-
-
-void GridFrame::setTetrimono(Tetrimono* par1Tetrimono) {
-    currentTetrimono = par1Tetrimono;
-}
-
-void GridFrame::setGrid(Grid* par1Grid) {
-    grid = par1Grid;
-}
-
-void GridFrame::setGame(Game *par1Game)
-{
-    currentGame = par1Game;
 }
 
 void GridFrame::pause() {

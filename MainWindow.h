@@ -25,9 +25,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void sendTetrimonoToGridFrame(Tetrimono* par1Tetrimono, int par1);
-    void sendGridToGridFrame(Grid* par1Grid);
-    void sendGameToGridFrame(Game* par1Game);
+    void sendObjectsToGridFrame(Game* par1Game, Grid* par2Grid, Tetrimono* par3Tetrimono, int par4);
     void loadTetrimonosImages();
     int getNextTetrimonoNumber();
 
@@ -37,7 +35,7 @@ public slots:
     void goToMenu();
 
 signals:
-        void goToMenuSignal();
+    void goToMenuSignal();
     
 private:
     Ui::MainWindow *ui;
@@ -45,10 +43,6 @@ private:
     Grid* grid;
     QImage tetrimonoImages[7];
     int nextTetrimonoNumber;
-
-private slots:
-    void on_ExitButton_clicked();
-
 };
 
 #endif // MAINWINDOW_H

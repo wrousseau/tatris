@@ -5,56 +5,45 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+    // On charge les Images
     loadTetrimonosImages();
 
+    // On instancie les objets (grille, jeu)
     grid = new Grid();
     currentGame = new Game(grid);
+
+    // On définit le premier Tetrimono ainsi que le suivant et on instancie
     int first = rand() % 7;
     nextTetrimonoNumber = rand() % 7;
+    Tetrimono* nextBlock = new Tetrimono(first, grid);
+
+    // Setup de l'interface
+    ui->setupUi(this);
+    ui->ScoreLCD->setSegmentStyle(QLCDNumber::Filled);
     ui->nextLabel->setPixmap(QPixmap::fromImage(tetrimonoImages[nextTetrimonoNumber]));
 
-    Tetrimono* nextBlock = new Tetrimono(first, grid);
-    ui->ScoreLCD->setSegmentStyle(QLCDNumber::Filled);
+    // On envoie les objets à l'interface de la grille (GridFrame)
+    sendObjectsToGridFrame(currentGame,grid,nextBlock,nextTetrimonoNumber);
+
+    // Connexions Signaux / Slots
     QObject::connect(currentGame, SIGNAL(updateScore(int)), this->ui->ScoreLCD, SLOT(display(int)));
     QObject::connect(currentGame, SIGNAL(updateLevel(QString)), this, SLOT(updateLevel(QString)));
     QObject::connect(ui->MainGrid, SIGNAL(updateNextBlock(int)), this, SLOT(setNextTetrimonoNumber(int)));
     QObject::connect(ui->MainGrid, SIGNAL(goToMenuSignal()), this, SLOT(goToMenu()));
-
-
-
-
-
-
-
-    sendGameToGridFrame(currentGame);
-    sendGridToGridFrame(grid);
-    sendTetrimonoToGridFrame(nextBlock,nextTetrimonoNumber);
-
-
+    QObject::connect(ui->ExitButton, SIGNAL(clicked()), this, SLOT(goToMenu()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete grid;
+    delete currentGame;
+    delete tetrimonoImages;
 }
 
-void MainWindow::on_ExitButton_clicked()
+void MainWindow::sendObjectsToGridFrame(Game* par1Game, Grid* par2Grid, Tetrimono* par3Tetrimono, int par4)
 {
-    QApplication::exit();
-}
-
-void MainWindow::sendTetrimonoToGridFrame(Tetrimono* par1Tetrimono, int par1) {
-    ui->MainGrid->setTetrimono(par1Tetrimono);
-    ui->MainGrid->setNextTetrimonoNumber(par1);
-}
-
-void MainWindow::sendGridToGridFrame(Grid* par1Grid) {
-    ui->MainGrid->setGrid(par1Grid);
-}
-
-void MainWindow::sendGameToGridFrame(Game* par1Game) {
-    ui->MainGrid->setGame(par1Game);
+    ui->MainGrid->setObjects(par1Game, par2Grid, par3Tetrimono, par4);
 }
 
 void MainWindow::loadTetrimonosImages()
@@ -77,7 +66,6 @@ void MainWindow::setNextTetrimonoNumber(int par1)
     if (par1 >= 0 && par1 < 7) {
         nextTetrimonoNumber = par1;
         ui->nextLabel->setPixmap(QPixmap::fromImage(tetrimonoImages[nextTetrimonoNumber]));
-
     }
 }
 
@@ -91,7 +79,6 @@ void MainWindow::goToMenu()
 {
     this->hide();
     emit goToMenuSignal();
-    delete ui->MainGrid;
     delete this;
 }
 

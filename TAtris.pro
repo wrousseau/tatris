@@ -6,13 +6,9 @@
 
 QT       += core gui
 
-
-TARGET = TAtris
+TARGET = tatris
 
 TEMPLATE = app
-
-
-
 
 SOURCES += main.cpp \
     GridFrame.cpp \
@@ -35,21 +31,9 @@ FORMS    += \
     MainWindow.ui \
     MenuWindow.ui
 
-
 RESOURCES += \
     Ressources.qrc
 
-
-
-QMAKE_EXTRA_TARGETS += copyfiles
-PRE_TARGETDEPS += copyfiles
-
-
-
 QT += multimedia widgets
 
-
-
 CONFIG -= console
-
-

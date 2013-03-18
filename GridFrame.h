@@ -34,10 +34,7 @@ private:
 
 public:
     explicit GridFrame(QWidget *parent = 0);
-    void setNextTetrimonoNumber(int par1);
-    void setTetrimono(Tetrimono* par1Tetrimono);
-    void setGrid(Grid* par1Grid);
-    void setGame(Game* par1Game);
+    void setObjects(Game* par1Game, Grid* par2Grid, Tetrimono* par3Tetrimono, int par4);
     void setBrush(blockColor color, QPainter &p);
     void pause();
     void setTimer(int par1);

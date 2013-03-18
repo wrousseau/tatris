@@ -5,7 +5,6 @@
 Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     onFloor = false;
     moveTry = 0;
-
     rotation = 0;
     grid = par2Grid;
     blockType = par1;
@@ -17,21 +16,18 @@ Tetrimono::Tetrimono(int par1, Grid* par2Grid) {
     coord.x1=((GRID_WIDTH)*25/2 - 25)-farthests[0];
     coord.x2=-farthests[2];
     setColor();
-
-
-
-        rotateSound = new QMediaPlayer;
-        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-        rotateSound->setMedia(QUrl::fromLocalFile(globalPath + "rotate.mp3"));
-        rotateSound->setVolume(50);
-
-        fallSound = new QMediaPlayer;
-        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-        fallSound->setMedia(QUrl::fromLocalFile(globalPath + "fall.mp3"));
-        fallSound->setVolume(50);
+    rotateSound = new QMediaPlayer;
+    rotateSound->setMedia(QUrl::fromLocalFile(globalPath + "rotate.mp3"));
+    rotateSound->setVolume(50);
+    fallSound = new QMediaPlayer;
+    fallSound->setMedia(QUrl::fromLocalFile(globalPath + "fall.mp3"));
+    fallSound->setVolume(50);
 }
 
-Tetrimono::~Tetrimono() {
+Tetrimono::~Tetrimono()
+{
+    delete fallSound;
+    delete rotateSound;
 }
 
 void Tetrimono::initializeValues(int par1, int par2) {

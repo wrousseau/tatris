@@ -7,9 +7,9 @@ MenuWindow::MenuWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Signaux pour lancer un jeu, accéder aux options et quitter le jeu
     QObject::connect(ui->play_button,SIGNAL(clicked()),this,SLOT(launchGame()));
     QObject::connect(ui->exit_button,SIGNAL(clicked()),this,SLOT(close()));
-
 }
 
 MenuWindow::~MenuWindow()
@@ -23,6 +23,7 @@ void MenuWindow::launchGame()
        mainWindow->showNormal();
        QObject::connect(mainWindow,SIGNAL(goToMenuSignal()),this,SLOT(showMenu()));
        this->hide();
+       this->close();
 }
 
 void MenuWindow::showMenu()
