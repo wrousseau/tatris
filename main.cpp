@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "MenuWindow.h"
 #include <QApplication>
 #include <time.h>
 
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     app.setApplicationName("TAtris");
 
-    MainWindow gameWindow; // Initialisation de la fenêtre principale
+    MenuWindow gameWindow; // Initialisation de la fenêtre principale
     gameWindow.show();
 
     exit(app.exec()); // Sortie de l'Application

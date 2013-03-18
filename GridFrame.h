@@ -44,6 +44,7 @@ public:
     
 signals:
     void updateNextBlock(int par1);
+    void goToMenuSignal();
 
     
 public slots:

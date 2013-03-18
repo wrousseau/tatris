@@ -16,13 +16,13 @@ GridFrame::GridFrame(QWidget *parent) :
         connect(fallingTimer,SIGNAL(timeout()), this, SLOT(updateFalling()));
 
         gameOverSound = new QMediaPlayer;
-        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-        gameOverSound->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/tatris_sounds/gameOver.mp3"));
+        QString path= QDir::currentPath() + "/audio/gameOver.mp3";
+        gameOverSound->setMedia(QUrl::fromLocalFile(path));
         gameOverSound->setVolume(75);
 
         music = new QMediaPlayer;
-        //player->setMedia(QUrl::fromLocalFile(QDir::current().path() +  QString("/salsa.mp3")));
-        music->setMedia(QUrl::fromLocalFile("/Users/wrousseau/Downloads/salsa.mp3"));
+        path= QDir::currentPath() + "/audio/salsa.mp3";
+        music->setMedia(QUrl::fromLocalFile(path));
         music->setVolume(50);
         music->play();
 
@@ -129,6 +129,8 @@ void GridFrame::keyPressEvent( QKeyEvent *k )
                 break;
             case Qt::Key_P:
                 pause();
+                music->stop();
+                emit goToMenuSignal();
                 break;
             case Qt::Key_Escape:
                 exit(0);
@@ -191,9 +193,11 @@ void GridFrame::setGame(Game *par1Game)
 void GridFrame::pause() {
     if (isPlaying) {
         timer->stop();
+        music->setVolume(10);
     }
     else {
         timer->start(1000);
+        music->setVolume(50);
     }
     update();
     isPlaying = !isPlaying;

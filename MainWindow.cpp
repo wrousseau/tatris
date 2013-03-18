@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(currentGame, SIGNAL(updateScore(int)), this->ui->ScoreLCD, SLOT(display(int)));
     QObject::connect(currentGame, SIGNAL(updateLevel(QString)), this, SLOT(updateLevel(QString)));
     QObject::connect(ui->MainGrid, SIGNAL(updateNextBlock(int)), this, SLOT(setNextTetrimonoNumber(int)));
+    QObject::connect(ui->MainGrid, SIGNAL(goToMenuSignal()), this, SLOT(goToMenu()));
 
 
 
@@ -85,3 +86,12 @@ void MainWindow::updateLevel(QString par1String)
     this->ui->LevelLabel->setText(par1String);
     this->ui->MainGrid->setTimer(0.8*this->ui->MainGrid->getTimer());
 }
+
+void MainWindow::goToMenu()
+{
+    this->hide();
+    emit goToMenuSignal();
+    delete ui->MainGrid;
+    delete this;
+}
+

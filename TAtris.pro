@@ -7,9 +7,10 @@
 QT       += core gui
 
 
-TARGET = TAtris2
+TARGET = TAtris
 
 TEMPLATE = app
+
 
 
 
@@ -18,7 +19,8 @@ SOURCES += main.cpp \
     Grid.cpp \
     Tetrimono.cpp \
     Game.cpp \
-    MainWindow.cpp
+    MainWindow.cpp \
+    MenuWindow.cpp
 
 HEADERS  += \
     Tetrimono.h \
@@ -26,21 +28,28 @@ HEADERS  += \
     Game.h \
     GridFrame.h \
     Grid.h \
-    MainWindow.h
+    MainWindow.h \
+    MenuWindow.h
 
 FORMS    += \
-    MainWindow.ui
+    MainWindow.ui \
+    MenuWindow.ui
 
 
 RESOURCES += \
     Ressources.qrc
 
-myFiles.sources = ressources*.mp3
-DEPLOYMENT += myFiles
+
+
+QMAKE_EXTRA_TARGETS += copyfiles
+PRE_TARGETDEPS += copyfiles
 
 
 
 QT += multimedia widgets
 
+
+
+CONFIG -= console
 
 

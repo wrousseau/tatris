@@ -1,11 +1,12 @@
 <RCC>
     <qresource prefix="/ressources">
-        <file>ressources/high-quality-space-backgrounds.jpg</file>
+        <file>ressources/galaxy2.jpg</file>
         <file>ressources/galaxy.jpg</file>
         <file>ressources/logo.png</file>
         <file>ressources/icone.png</file>
         <file>ressources/grid.png</file>
         <file>ressources/background.png</file>
         <file>ressources/tetrimonos.png</file>
+        <file>ressources/galaxy3.jpg</file>
     </qresource>
 </RCC>
